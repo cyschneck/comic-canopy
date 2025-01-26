@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://xjt5ucf5m4x7"]
+
+[ext_resource type="Texture2D" uid="uid://dimkya8fmpn6v" path="res://assets/sprites/list.png" id="1_xf8vw"]
+
+[node name="TextureButton" type="TextureButton"]
+custom_minimum_size = Vector2(100, 100)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_xf8vw")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -10.0
+offset_right = 30.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "My Comics"
+horizontal_alignment = 1
+vertical_alignment = 1

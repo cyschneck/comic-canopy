@@ -1,0 +1,201 @@
+[gd_scene load_steps=14 format=3 uid="uid://dchw2tg4juqnw"]
+
+[ext_resource type="PackedScene" uid="uid://xjt5ucf5m4x7" path="res://scenes/tab.tscn" id="1_3sr0o"]
+[ext_resource type="Script" path="res://scenes/bottom_toolbar.gd" id="1_et7sx"]
+[ext_resource type="Texture2D" uid="uid://cqgq3hiqqhbef" path="res://assets/sprites/cc_logo.jpg" id="1_k5f3a"]
+[ext_resource type="Texture2D" uid="uid://d1a6qsriwpnmg" path="res://assets/sprites/add.png" id="3_3faw0"]
+[ext_resource type="Texture2D" uid="uid://vx632jlmq0nl" path="res://assets/sprites/settings.png" id="4_humb4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6acxx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1f4gp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fm4fv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qntgb"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_a0kmr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
+size = Vector2(200, 225)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_2k5cq"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_liof5"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="base_menu" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background_color" type="ColorRect" parent="base_menu"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[node name="Bottom Tab Background" type="ColorRect" parent="base_menu/background_color"]
+z_index = 1
+custom_minimum_size = Vector2(0, 225)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -225.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.92549, 0.564706, 0.192157, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="base_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect" type="TextureRect" parent="base_menu/MarginContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("1_k5f3a")
+expand_mode = 1
+
+[node name="BottomToolbar" type="Control" parent="base_menu/MarginContainer"]
+layout_mode = 2
+script = ExtResource("1_et7sx")
+
+[node name="PanelContainer" type="PanelContainer" parent="base_menu/MarginContainer/BottomToolbar"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -960.0
+offset_bottom = 735.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6acxx")
+
+[node name="MyComicsTab" type="PanelContainer" parent="base_menu/MarginContainer/BottomToolbar/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1f4gp")
+
+[node name="Label" type="Label" parent="base_menu/MarginContainer/BottomToolbar/PanelContainer/MyComicsTab"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 75
+text = "My Comics"
+
+[node name="AddNewTab" type="PanelContainer" parent="base_menu/MarginContainer/BottomToolbar/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fm4fv")
+
+[node name="Label" type="Label" parent="base_menu/MarginContainer/BottomToolbar/PanelContainer/AddNewTab"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 75
+text = "Add New"
+
+[node name="SettingsTab" type="PanelContainer" parent="base_menu/MarginContainer/BottomToolbar/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qntgb")
+
+[node name="Label" type="Label" parent="base_menu/MarginContainer/BottomToolbar/PanelContainer/SettingsTab"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 75
+text = "Settings"
+
+[node name="Bottom Tab Background" type="ColorRect" parent="base_menu/MarginContainer/BottomToolbar"]
+custom_minimum_size = Vector2(0, 225)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -225.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.92549, 0.564706, 0.192157, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="MyComicsButton" parent="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer" instance=ExtResource("1_3sr0o")]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_a0kmr")
+
+[node name="my_comic_touch" type="TouchScreenButton" parent="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/MyComicsButton" groups=["touch_screen_button"]]
+position = Vector2(50, 75)
+shape = SubResource("RectangleShape2D_y4vb3")
+
+[node name="AddNewButton" parent="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer" instance=ExtResource("1_3sr0o")]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_2k5cq")
+texture_normal = ExtResource("3_3faw0")
+
+[node name="Label" parent="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/AddNewButton" index="0"]
+text = "Add New"
+
+[node name="add_new_touch" type="TouchScreenButton" parent="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/AddNewButton" groups=["touch_screen_button"]]
+position = Vector2(50, 75)
+shape = SubResource("RectangleShape2D_y4vb3")
+
+[node name="SettingsButton" parent="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer" instance=ExtResource("1_3sr0o")]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_liof5")
+texture_normal = ExtResource("4_humb4")
+
+[node name="Label" parent="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/SettingsButton" index="0"]
+text = "Settings"
+
+[node name="settings_touch" type="TouchScreenButton" parent="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/SettingsButton" groups=["touch_screen_button"]]
+position = Vector2(50, 75)
+shape = SubResource("RectangleShape2D_y4vb3")
+
+[editable path="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/MyComicsButton"]
+[editable path="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/AddNewButton"]
+[editable path="base_menu/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/SettingsButton"]
