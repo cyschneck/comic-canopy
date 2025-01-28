@@ -23,20 +23,22 @@ func on_touched_area_pressed(TouchArea) -> void:
 		"add_new_touch": on_tab_pressed(add_new_button)
 		"settings_touch": on_tab_pressed(settings_button)
 
-func on_tab_pressed(button) -> void:
-	for other_button in button.get_button_group().get_buttons():
-			# set all buttons to WHITE
-			other_button.modulate = Color.WHITE
-	# set selected button to BLACK
-	button.modulate = Color.BLACK # selected button set color
+func on_tab_pressed(selected_button) -> void:
+	# unselected buttons set to BLACK
+	my_comics_button.modulate = Color.BLACK
+	add_new_button.modulate = Color.BLACK
+	settings_button.modulate = Color.BLACK
 
-	# set ALL panels visible to false
+	# select button to WHITE
+	selected_button.modulate = Color.WHITE
+
+	# set ALL panels visibilty to false
 	my_comics_tab.visible = false
 	add_new_tab.visible = false
 	settings_tab.visible = false
 	
 	# set seleted button's panel to true
-	match button.name:
+	match selected_button.name:
 		"MyComicsButton": my_comics_tab.visible = true
 		"AddNewButton": add_new_tab.visible = true
 		"SettingsButton": settings_tab.visible = true
