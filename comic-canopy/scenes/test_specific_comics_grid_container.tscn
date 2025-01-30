@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://do08ivw8plaev"]
+[gd_scene load_steps=2 format=3 uid="uid://ceabhj0ug7ewh"]
 
-[ext_resource type="Texture2D" uid="uid://blbap47a54j41" path="res://assets/sprites/comic_list_icon.jpg" id="1_cpq38"]
+[ext_resource type="Texture2D" uid="uid://blbap47a54j41" path="res://assets/sprites/comic_list_icon.jpg" id="1_iejau"]
 
 [node name="test_row" type="GridContainer"]
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 250.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 0
@@ -14,23 +15,21 @@ columns = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_cpq38")
-expand_mode = 3
-stretch_mode = 5
+texture = ExtResource("1_iejau")
+stretch_mode = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(600, 250)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
 text = "
-[b]Comics Name[/b]
-[i]Artist Name, Writer Name[/i]
-Last read XX days ago"
+[b]Page XXX[/b]
+MM DD, YYYY"
 
 [node name="ComicPageLinkButton" type="LinkButton" parent="RichTextLabel"]
 layout_mode = 1
@@ -44,9 +43,8 @@ underline = 1
 
 [node name="ContinueLinkButton" type="LinkButton" parent="."]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 30
-action_mode = 0
-text = "Continue #XX"
+theme_override_font_sizes/font_size = 25
+text = "#XXX"
 underline = 2

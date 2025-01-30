@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dchw2tg4juqnw"]
+[gd_scene load_steps=13 format=3 uid="uid://dchw2tg4juqnw"]
 
 [ext_resource type="PackedScene" uid="uid://xjt5ucf5m4x7" path="res://scenes/tab.tscn" id="1_3sr0o"]
 [ext_resource type="Script" path="res://scripts/bottom_toolbar.gd" id="1_et7sx"]
@@ -6,23 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://vx632jlmq0nl" path="res://assets/sprites/settings.png" id="4_humb4"]
 [ext_resource type="Script" path="res://scripts/populate_my_comics_list.gd" id="7_2sohc"]
 [ext_resource type="PackedScene" uid="uid://do08ivw8plaev" path="res://scenes/test_my_comics_grid_container.tscn" id="7_43mfh"]
+[ext_resource type="PackedScene" uid="uid://ceabhj0ug7ewh" path="res://scenes/test_specific_comics_grid_container.tscn" id="7_d5vqm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6acxx"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1f4gp"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fm4fv"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qntgb"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_ed0td"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_j5bon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
 size = Vector2(200, 180)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_xurof"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_tn1ky"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_8vh1e"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ke0s2"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -88,38 +83,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_6acxx")
 
-[node name="MyComicsTab" type="PanelContainer" parent="BackgroundColors/MarginContainer/BottomToolbar/Menu Panel"]
+[node name="MyComicsHeader" type="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/Menu Panel"]
 unique_name_in_owner = true
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_1f4gp")
-
-[node name="Label" type="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/Menu Panel/MyComicsTab"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "My Comics"
 
-[node name="AddNewTab" type="PanelContainer" parent="BackgroundColors/MarginContainer/BottomToolbar/Menu Panel"]
+[node name="AddNewHeader" type="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/Menu Panel"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fm4fv")
-
-[node name="Label" type="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/Menu Panel/AddNewTab"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Add New"
 
-[node name="SettingsTab" type="PanelContainer" parent="BackgroundColors/MarginContainer/BottomToolbar/Menu Panel"]
+[node name="SettingsHeader" type="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/Menu Panel"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_qntgb")
-
-[node name="Label" type="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/Menu Panel/SettingsTab"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -144,7 +127,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_ed0td")
+button_group = SubResource("ButtonGroup_j5bon")
 
 [node name="my_comic_touch" type="TouchScreenButton" parent="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton" groups=["touch_screen_button"]]
 position = Vector2(51, 68)
@@ -154,7 +137,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_xurof")
+button_group = SubResource("ButtonGroup_tn1ky")
 texture_normal = ExtResource("3_3faw0")
 
 [node name="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/AddNewButton" index="0"]
@@ -168,7 +151,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_8vh1e")
+button_group = SubResource("ButtonGroup_ke0s2")
 texture_normal = ExtResource("4_humb4")
 
 [node name="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/SettingsButton" index="0"]
@@ -181,21 +164,21 @@ shape = SubResource("RectangleShape2D_y4vb3")
 [node name="MyComicsScrollContainer" type="ScrollContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 314.0
-offset_bottom = -182.0
+offset_top = -1677.0
+offset_bottom = -181.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MyComicsScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("7_2sohc")
-
-[node name="test_row" parent="MyComicsScrollContainer/VBoxContainer" instance=ExtResource("7_43mfh")]
-layout_mode = 2
 
 [node name="test_row2" parent="MyComicsScrollContainer/VBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
@@ -213,6 +196,45 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="test_row7" parent="MyComicsScrollContainer/VBoxContainer" instance=ExtResource("7_43mfh")]
+layout_mode = 2
+
+[node name="SpecificComicsScrollContainer" type="ScrollContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 314.0
+offset_bottom = -182.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SpecificComicsScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("7_2sohc")
+
+[node name="test_row" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row2" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row3" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row4" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row5" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row6" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row7" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
 [editable path="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton"]
