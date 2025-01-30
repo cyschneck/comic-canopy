@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dchw2tg4juqnw"]
+[gd_scene load_steps=14 format=3 uid="uid://dchw2tg4juqnw"]
 
 [ext_resource type="PackedScene" uid="uid://xjt5ucf5m4x7" path="res://scenes/tab.tscn" id="1_3sr0o"]
 [ext_resource type="Script" path="res://scripts/bottom_toolbar.gd" id="1_et7sx"]
+[ext_resource type="Script" path="res://scripts/comics_list.gd" id="2_8ntmi"]
 [ext_resource type="Texture2D" uid="uid://d1a6qsriwpnmg" path="res://assets/sprites/add.png" id="3_3faw0"]
 [ext_resource type="Texture2D" uid="uid://vx632jlmq0nl" path="res://assets/sprites/settings.png" id="4_humb4"]
-[ext_resource type="Script" path="res://scripts/populate_my_comics_list.gd" id="7_2sohc"]
-[ext_resource type="PackedScene" uid="uid://do08ivw8plaev" path="res://scenes/test_my_comics_grid_container.tscn" id="7_43mfh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6acxx"]
 
@@ -15,14 +14,14 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qntgb"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ed0td"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_n13jh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
-size = Vector2(200, 180)
+size = Vector2(200, 225)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_xurof"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_g8562"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_8vh1e"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_valjp"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -50,16 +49,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.121569, 0.121569, 0.121569, 1)
 
-[node name="ColorRect" type="ColorRect" parent="BackgroundColors"]
+[node name="Bottom Tab Background" type="ColorRect" parent="BackgroundColors/Background Color"]
+z_index = 1
+custom_minimum_size = Vector2(0, 225)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -182.0
+offset_top = -225.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.984314, 0.545098, 0.00392157, 1)
+color = Color(0.92549, 0.564706, 0.192157, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="BackgroundColors"]
 layout_mode = 1
@@ -100,6 +101,10 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "My Comics"
 
+[node name="ComicsList" type="ItemList" parent="BackgroundColors/MarginContainer/BottomToolbar/Menu Panel/MyComicsTab"]
+layout_mode = 2
+script = ExtResource("2_8ntmi")
+
 [node name="AddNewTab" type="PanelContainer" parent="BackgroundColors/MarginContainer/BottomToolbar/Menu Panel"]
 unique_name_in_owner = true
 visible = false
@@ -126,95 +131,68 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Settings"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BackgroundColors/MarginContainer/BottomToolbar"]
-z_index = 1
+[node name="Bottom Tab Background" type="ColorRect" parent="BackgroundColors/MarginContainer/BottomToolbar"]
+custom_minimum_size = Vector2(0, 225)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -159.0
-offset_bottom = -59.0
+offset_top = -225.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 100
-alignment = 1
+color = Color(0.92549, 0.564706, 0.192157, 0)
 
-[node name="MyComicsButton" parent="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer" instance=ExtResource("1_3sr0o")]
-unique_name_in_owner = true
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_ed0td")
-
-[node name="my_comic_touch" type="TouchScreenButton" parent="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton" groups=["touch_screen_button"]]
-position = Vector2(51, 68)
-shape = SubResource("RectangleShape2D_y4vb3")
-
-[node name="AddNewButton" parent="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer" instance=ExtResource("1_3sr0o")]
-unique_name_in_owner = true
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_xurof")
-texture_normal = ExtResource("3_3faw0")
-
-[node name="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/AddNewButton" index="0"]
-text = "Add New"
-
-[node name="add_new_touch" type="TouchScreenButton" parent="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/AddNewButton" groups=["touch_screen_button"]]
-position = Vector2(50, 68)
-shape = SubResource("RectangleShape2D_y4vb3")
-
-[node name="SettingsButton" parent="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer" instance=ExtResource("1_3sr0o")]
-unique_name_in_owner = true
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_8vh1e")
-texture_normal = ExtResource("4_humb4")
-
-[node name="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/SettingsButton" index="0"]
-text = "Settings"
-
-[node name="settings_touch" type="TouchScreenButton" parent="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/SettingsButton" groups=["touch_screen_button"]]
-position = Vector2(50, 68)
-shape = SubResource("RectangleShape2D_y4vb3")
-
-[node name="MyComicsScrollContainer" type="ScrollContainer" parent="."]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 314.0
-offset_bottom = -182.0
+offset_top = -23.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MyComicsScrollContainer"]
+[node name="MyComicsButton" parent="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer" instance=ExtResource("1_3sr0o")]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("7_2sohc")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_n13jh")
 
-[node name="test_row" parent="MyComicsScrollContainer/VBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="my_comic_touch" type="TouchScreenButton" parent="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/MyComicsButton" groups=["touch_screen_button"]]
+position = Vector2(50, 75)
+shape = SubResource("RectangleShape2D_y4vb3")
+
+[node name="AddNewButton" parent="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer" instance=ExtResource("1_3sr0o")]
+unique_name_in_owner = true
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g8562")
+texture_normal = ExtResource("3_3faw0")
 
-[node name="test_row2" parent="MyComicsScrollContainer/VBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/AddNewButton" index="0"]
+text = "Add New"
+
+[node name="add_new_touch" type="TouchScreenButton" parent="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/AddNewButton" groups=["touch_screen_button"]]
+position = Vector2(50, 75)
+shape = SubResource("RectangleShape2D_y4vb3")
+
+[node name="SettingsButton" parent="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer" instance=ExtResource("1_3sr0o")]
+unique_name_in_owner = true
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_valjp")
+texture_normal = ExtResource("4_humb4")
 
-[node name="test_row3" parent="MyComicsScrollContainer/VBoxContainer" instance=ExtResource("7_43mfh")]
-layout_mode = 2
+[node name="Label" parent="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/SettingsButton" index="0"]
+text = "Settings"
 
-[node name="test_row4" parent="MyComicsScrollContainer/VBoxContainer" instance=ExtResource("7_43mfh")]
-layout_mode = 2
+[node name="settings_touch" type="TouchScreenButton" parent="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/SettingsButton" groups=["touch_screen_button"]]
+position = Vector2(50, 75)
+shape = SubResource("RectangleShape2D_y4vb3")
 
-[node name="test_row5" parent="MyComicsScrollContainer/VBoxContainer" instance=ExtResource("7_43mfh")]
-layout_mode = 2
-
-[node name="test_row6" parent="MyComicsScrollContainer/VBoxContainer" instance=ExtResource("7_43mfh")]
-layout_mode = 2
-
-[node name="test_row7" parent="MyComicsScrollContainer/VBoxContainer" instance=ExtResource("7_43mfh")]
-layout_mode = 2
-
-[editable path="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton"]
-[editable path="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/AddNewButton"]
-[editable path="BackgroundColors/MarginContainer/BottomToolbar/HBoxContainer/SettingsButton"]
+[editable path="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/MyComicsButton"]
+[editable path="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/AddNewButton"]
+[editable path="BackgroundColors/MarginContainer/BottomToolbar/Bottom Tab Background/HBoxContainer/SettingsButton"]

@@ -3,6 +3,7 @@ extends Node
 @onready var my_comics_tab: PanelContainer = %MyComicsTab
 @onready var add_new_tab: PanelContainer = %AddNewTab
 @onready var settings_tab: PanelContainer = %SettingsTab
+@onready var my_comics_scroll_container: ScrollContainer = %MyComicsScrollContainer
 
 @onready var my_comics_button: TextureButton = %MyComicsButton
 @onready var add_new_button: TextureButton = %AddNewButton
@@ -34,11 +35,14 @@ func on_tab_pressed(selected_button) -> void:
 
 	# set ALL panels visibilty to false
 	my_comics_tab.visible = false
+	my_comics_scroll_container.visible = false
 	add_new_tab.visible = false
 	settings_tab.visible = false
 	
 	# set seleted button's panel to true
 	match selected_button.name:
-		"MyComicsButton": my_comics_tab.visible = true
+		"MyComicsButton": 
+			my_comics_tab.visible = true
+			my_comics_scroll_container.visible = true
 		"AddNewButton": add_new_tab.visible = true
 		"SettingsButton": settings_tab.visible = true
