@@ -8,14 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://do08ivw8plaev" path="res://scenes/test_my_comics_grid_container.tscn" id="7_43mfh"]
 [ext_resource type="PackedScene" uid="uid://ceabhj0ug7ewh" path="res://scenes/test_specific_comics_grid_container.tscn" id="7_d5vqm"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_d8flf"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_fiyqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
 size = Vector2(200, 200)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ccewa"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_jpglf"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_8yqpf"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_rfyox"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -84,7 +84,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_d8flf")
+button_group = SubResource("ButtonGroup_fiyqh")
 
 [node name="my_comic_touch" type="TouchScreenButton" parent="BottomToolbar/HBoxContainer/MyComicsButton" groups=["touch_screen_button"]]
 position = Vector2(51, 77)
@@ -94,7 +94,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_ccewa")
+button_group = SubResource("ButtonGroup_jpglf")
 texture_normal = ExtResource("3_3faw0")
 
 [node name="RichTextLabel" parent="BottomToolbar/HBoxContainer/AddNewButton" index="0"]
@@ -110,7 +110,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_8yqpf")
+button_group = SubResource("ButtonGroup_rfyox")
 texture_normal = ExtResource("4_humb4")
 
 [node name="RichTextLabel" parent="BottomToolbar/HBoxContainer/SettingsButton" index="0"]
@@ -152,6 +152,7 @@ theme_override_font_sizes/font_size = 75
 text = "My Comics"
 
 [node name="MyComicsScrollContainer" type="ScrollContainer" parent="MainMiddle/MyComics"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -195,7 +196,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="SelectedComicsScrollContainer" type="ScrollContainer" parent="MainMiddle/MyComics"]
-visible = false
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -205,36 +206,36 @@ offset_bottom = -198.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SelectedComicsVBoxContainer" type="VBoxContainer" parent="MainMiddle/MyComics/SelectedComicsScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMiddle/MyComics/SelectedComicsScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="test_row" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row2" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row2" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row3" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row3" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row4" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row4" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row5" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row5" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row6" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row6" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row7" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row7" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row8" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row8" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row9" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row9" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
 [node name="AddNew" type="Control" parent="MainMiddle"]

@@ -13,6 +13,7 @@ config_version=5
 config/name="comic-canopy"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.984314, 0.545098, 0.00392157, 1)
 config/icon="res://icon.svg"
 
 [display]
