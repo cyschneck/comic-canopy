@@ -3,7 +3,6 @@ extends Node
 @onready var my_comics: Control = %MyComics
 @onready var add_new: Control = %AddNew
 @onready var settings: Control = %Settings
-@onready var specific_comics_scroll_container: ScrollContainer = %SpecificComicsScrollContainer
 
 @onready var my_comics_button: TextureButton = %MyComicsButton
 @onready var add_new_button: TextureButton = %AddNewButton
@@ -35,7 +34,6 @@ func on_tab_pressed(selected_button) -> void:
 
 	# set ALL headers visibilty to false
 	my_comics.visible = false
-	specific_comics_scroll_container.visible = false
 	add_new.visible = false
 	settings.visible = false
 	

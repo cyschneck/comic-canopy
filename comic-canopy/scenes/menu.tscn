@@ -1,24 +1,37 @@
-[gd_scene load_steps=14 format=3 uid="uid://dchw2tg4juqnw"]
+[gd_scene load_steps=12 format=3 uid="uid://dchw2tg4juqnw"]
 
 [ext_resource type="PackedScene" uid="uid://xjt5ucf5m4x7" path="res://scenes/tab.tscn" id="1_3sr0o"]
 [ext_resource type="Script" path="res://scripts/bottom_toolbar.gd" id="1_et7sx"]
 [ext_resource type="Texture2D" uid="uid://d1a6qsriwpnmg" path="res://assets/sprites/add.png" id="3_3faw0"]
 [ext_resource type="Texture2D" uid="uid://vx632jlmq0nl" path="res://assets/sprites/settings.png" id="4_humb4"]
 [ext_resource type="Script" path="res://scripts/populate_my_comics.gd" id="5_8k4yo"]
-[ext_resource type="Script" path="res://scripts/select_comic_from_list.gd" id="6_op02q"]
 [ext_resource type="PackedScene" uid="uid://do08ivw8plaev" path="res://scenes/test_my_comics_grid_container.tscn" id="7_43mfh"]
-[ext_resource type="PackedScene" uid="uid://ceabhj0ug7ewh" path="res://scenes/test_specific_comics_grid_container.tscn" id="7_d5vqm"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_8j4aw"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_j8rp8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
 size = Vector2(200, 200)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_6ujlr"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_mmb7c"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_1pnnl"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_yaqbb"]
 
-[sub_resource type="GDScript" id="GDScript_3fuw0"]
+[sub_resource type="GDScript" id="GDScript_j0pv3"]
+script/source = "extends VBoxContainer
+
+func _ready() -> void:
+	print(\"running setup\")
+	for button in get_tree().get_nodes_in_group(\"comic_main_select\"):
+		#button.connect(\"pressed\", Callable(self, \"_on_comic_page_link_button_pressed\").bind(button))
+		#button.connect(\"pressed\", self, _on_comic_page_link_button_pressed, [button])
+		#button.pressed.connect(_on_comic_page_link_button_pressed.bind(button))
+		#button.connect(button.name, Callable(_on_comic_page_link_button_pressed));
+		pass
+
+func _on_comic_page_link_button_pressed() -> void:
+	print(\"button pressed\")
+	#print(selected_button.get_parent().get_parent().get_name())
+"
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -87,7 +100,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_8j4aw")
+button_group = SubResource("ButtonGroup_j8rp8")
 
 [node name="my_comic_touch" type="TouchScreenButton" parent="BottomToolbar/HBoxContainer/MyComicsButton" groups=["touch_screen_button"]]
 position = Vector2(51, 77)
@@ -97,7 +110,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_6ujlr")
+button_group = SubResource("ButtonGroup_mmb7c")
 texture_normal = ExtResource("3_3faw0")
 
 [node name="RichTextLabel" parent="BottomToolbar/HBoxContainer/AddNewButton" index="0"]
@@ -113,7 +126,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_1pnnl")
+button_group = SubResource("ButtonGroup_yaqbb")
 texture_normal = ExtResource("4_humb4")
 
 [node name="RichTextLabel" parent="BottomToolbar/HBoxContainer/SettingsButton" index="0"]
@@ -170,7 +183,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("6_op02q")
+script = SubResource("GDScript_j0pv3")
 
 [node name="test_row3" parent="MainMiddle/MyComics/MyComicsScrollContainer/VBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
@@ -242,45 +255,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Settings"
-
-[node name="SpecificComicsScrollContainer" type="ScrollContainer" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 314.0
-offset_bottom = -182.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SpecificComicsScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-script = SubResource("GDScript_3fuw0")
-
-[node name="test_row" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
-layout_mode = 2
-
-[node name="test_row2" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
-layout_mode = 2
-
-[node name="test_row3" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
-layout_mode = 2
-
-[node name="test_row4" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
-layout_mode = 2
-
-[node name="test_row5" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
-layout_mode = 2
-
-[node name="test_row6" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
-layout_mode = 2
-
-[node name="test_row7" parent="SpecificComicsScrollContainer/VBoxContainer" instance=ExtResource("7_d5vqm")]
-layout_mode = 2
 
 [editable path="BottomToolbar/HBoxContainer/MyComicsButton"]
 [editable path="BottomToolbar/HBoxContainer/AddNewButton"]
