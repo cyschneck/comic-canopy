@@ -1,9 +1,8 @@
 extends Node
 
-@onready var my_comics_header: Label = %MyComicsHeader
-@onready var add_new_header: Label = %AddNewHeader
-@onready var settings_header: Label = %SettingsHeader
-@onready var my_comics_scroll_container: ScrollContainer = %MyComicsScrollContainer
+@onready var my_comics: Control = %MyComics
+@onready var add_new: Control = %AddNew
+@onready var settings: Control = %Settings
 @onready var specific_comics_scroll_container: ScrollContainer = %SpecificComicsScrollContainer
 
 @onready var my_comics_button: TextureButton = %MyComicsButton
@@ -35,16 +34,13 @@ func on_tab_pressed(selected_button) -> void:
 	selected_button.modulate = Color.WHITE
 
 	# set ALL headers visibilty to false
-	my_comics_header.visible = false
-	my_comics_scroll_container.visible = false
+	my_comics.visible = false
 	specific_comics_scroll_container.visible = false
-	add_new_header.visible = false
-	settings_header.visible = false
+	add_new.visible = false
+	settings.visible = false
 	
 	# set seleted button's header to true
 	match selected_button.name:
-		"MyComicsButton": 
-			my_comics_header.visible = true
-			my_comics_scroll_container.visible = true
-		"AddNewButton": add_new_header.visible = true
-		"SettingsButton": settings_header.visible = true
+		"MyComicsButton": my_comics.visible = true
+		"AddNewButton": add_new.visible = true
+		"SettingsButton": settings.visible = true
