@@ -36,6 +36,6 @@ func _on_comic_page_link_button_pressed() -> void:
 		page_row.get_child(1).text = page_number + "\n" + date_published
 
 		# edit link button text
-		page_row.get_child(2).text = "Continue #" +  str(page_num)
+		page_row.get_child(2).get_child(0).text = "#" +  str(page_num)
 		#page_row.get_child(2).uri = "https://xkcd.com/3043/"
 		selected_comics_scroll_container.get_child(0).add_child(page_row)

@@ -14,7 +14,8 @@ var comic_archive = ["sci-fi comic",
 					"murder mystery comic",
 					"sad comic",
 					"In the beginning, the universe was created. This has made a lot of people very angry and been widely regarded as a bad move.",
-					"funny comic"]
+					"funny comic",
+					"hellhound on my trail"]
 
 # testing random number generator
 var rng = RandomNumberGenerator.new()

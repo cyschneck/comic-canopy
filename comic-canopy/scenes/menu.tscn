@@ -8,18 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://bjr2g5le6q882" path="res://assets/sprites/search_grey.png" id="5_w8dkv"]
 [ext_resource type="Texture2D" uid="uid://byjpq87ja0td2" path="res://assets/sprites/search_orange.png" id="6_a2uta"]
 [ext_resource type="PackedScene" uid="uid://do08ivw8plaev" path="res://scenes/test_my_comics_grid_container.tscn" id="7_43mfh"]
-[ext_resource type="PackedScene" uid="uid://ceabhj0ug7ewh" path="res://scenes/test_specific_comics_grid_container.tscn" id="7_d5vqm"]
+[ext_resource type="PackedScene" uid="uid://cr4siadbbx2pq" path="res://scenes/test_specific_comics_grid_container.tscn" id="7_d5vqm"]
 [ext_resource type="Texture2D" uid="uid://cb6g04a1aeei6" path="res://assets/sprites/settings_grey.png" id="7_rfvfi"]
 [ext_resource type="Texture2D" uid="uid://dg0icgvg2heru" path="res://assets/sprites/settings_orange.png" id="8_bqc0n"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ln18f"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_npv1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
 size = Vector2(200, 250)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_3jds7"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_chbme"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_a5qmo"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_cebco"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -92,7 +92,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_ln18f")
+button_group = SubResource("ButtonGroup_npv1y")
 texture_normal = ExtResource("3_kxjk2")
 texture_pressed = ExtResource("4_ig0np")
 
@@ -108,7 +108,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_3jds7")
+button_group = SubResource("ButtonGroup_chbme")
 texture_normal = ExtResource("5_w8dkv")
 texture_pressed = ExtResource("6_a2uta")
 
@@ -125,7 +125,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_a5qmo")
+button_group = SubResource("ButtonGroup_cebco")
 texture_normal = ExtResource("7_rfvfi")
 texture_pressed = ExtResource("8_bqc0n")
 
@@ -168,15 +168,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 198.0
-offset_bottom = -198.0
+offset_top = 199.0
+offset_bottom = -193.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MyComicsVBoxContainer" type="VBoxContainer" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="test_row3" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
@@ -277,16 +276,15 @@ text = "Add New"
 
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/MainMiddle/AddNew"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 60.0
-offset_top = 199.0
-offset_right = -35.0
-offset_bottom = 256.0
-grow_horizontal = 2
+offset_left = 109.0
+offset_top = 201.0
+offset_right = 549.0
+offset_bottom = 258.0
 theme_override_colors/font_placeholder_color = Color(0.498039, 0.498039, 0.498039, 0.498039)
+theme_override_constants/outline_size = 0
+theme_override_constants/caret_width = 0
 theme_override_font_sizes/font_size = 35
-placeholder_text = "Search for New Comics"
+placeholder_text = "Search for New Comics..."
 
 [node name="Settings" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
