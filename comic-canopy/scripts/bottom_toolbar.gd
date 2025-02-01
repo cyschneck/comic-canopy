@@ -14,6 +14,13 @@ func _ready() -> void:
 	setup_functions()
 	on_tab_pressed(my_comics_button) # start on My Comics page
 	
+func take_screenshot():
+	var date = Time.get_date_string_from_system().replace(".","_") 
+	var time :String = Time.get_time_string_from_system().replace(":","")
+	var screenshot_path = "res://assets/screenshots/screenshot_" + date+ "_" + time + ".jpg"
+	var image = get_viewport().get_texture().get_image()
+	image.save_jpg(screenshot_path)
+	
 func setup_functions() -> void:
 	var touch_areas = get_tree().get_nodes_in_group("touch_screen_button")
 	for area in touch_areas:
@@ -46,5 +53,10 @@ func on_tab_pressed(selected_button) -> void:
 			my_comics.get_child(0).text = "My Comics"
 			my_comics.get_child(1).visible = true
 			my_comics.get_child(2).visible = false
-		"AddNewButton": add_new.visible = true
-		"SettingsButton": settings.visible = true
+			take_screenshot()
+		"AddNewButton": 
+			add_new.visible = true
+			take_screenshot()
+		"SettingsButton": 
+			settings.visible = true
+			take_screenshot()

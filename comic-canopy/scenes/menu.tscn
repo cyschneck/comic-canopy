@@ -1,21 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://dchw2tg4juqnw"]
+[gd_scene load_steps=16 format=3 uid="uid://dchw2tg4juqnw"]
 
 [ext_resource type="PackedScene" uid="uid://xjt5ucf5m4x7" path="res://scenes/tab.tscn" id="1_3sr0o"]
 [ext_resource type="Script" path="res://scripts/bottom_toolbar.gd" id="1_et7sx"]
-[ext_resource type="Texture2D" uid="uid://d1a6qsriwpnmg" path="res://assets/sprites/add.png" id="3_3faw0"]
-[ext_resource type="Texture2D" uid="uid://vx632jlmq0nl" path="res://assets/sprites/settings.png" id="4_humb4"]
+[ext_resource type="Texture2D" uid="uid://cyv4nja7imakw" path="res://assets/sprites/comics_grey.png" id="3_kxjk2"]
+[ext_resource type="Texture2D" uid="uid://dilu3we47xg76" path="res://assets/sprites/comics_orange.png" id="4_ig0np"]
 [ext_resource type="Script" path="res://scripts/populate_my_comics.gd" id="5_8k4yo"]
+[ext_resource type="Texture2D" uid="uid://bjr2g5le6q882" path="res://assets/sprites/search_grey.png" id="5_w8dkv"]
+[ext_resource type="Texture2D" uid="uid://byjpq87ja0td2" path="res://assets/sprites/search_orange.png" id="6_a2uta"]
 [ext_resource type="PackedScene" uid="uid://do08ivw8plaev" path="res://scenes/test_my_comics_grid_container.tscn" id="7_43mfh"]
 [ext_resource type="PackedScene" uid="uid://ceabhj0ug7ewh" path="res://scenes/test_specific_comics_grid_container.tscn" id="7_d5vqm"]
+[ext_resource type="Texture2D" uid="uid://cb6g04a1aeei6" path="res://assets/sprites/settings_grey.png" id="7_rfvfi"]
+[ext_resource type="Texture2D" uid="uid://dg0icgvg2heru" path="res://assets/sprites/settings_orange.png" id="8_bqc0n"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_d8flf"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_h6vb2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
-size = Vector2(200, 200)
+size = Vector2(200, 250)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ccewa"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_qaq5y"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_8yqpf"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_fi8ql"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -41,7 +45,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.121569, 0.121569, 0.121569, 1)
+color = Color(0.14902, 0.14902, 0.14902, 1)
 
 [node name="ColorRect" type="ColorRect" parent="BackgroundColors"]
 layout_mode = 1
@@ -49,24 +53,28 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -198.0
+offset_top = -254.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.121569, 0.121569, 0.121569, 1)
+color = Color(0.00392157, 0.0156863, 0.0352941, 1)
 
-[node name="BottomToolbar" type="Control" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -16.0
-offset_bottom = -16.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 60
+
+[node name="BottomToolbar" type="Control" parent="MarginContainer"]
+layout_mode = 2
 script = ExtResource("1_et7sx")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BottomToolbar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/BottomToolbar"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 12
@@ -80,58 +88,62 @@ grow_vertical = 0
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="MyComicsButton" parent="BottomToolbar/HBoxContainer" instance=ExtResource("1_3sr0o")]
+[node name="MyComicsButton" parent="MarginContainer/BottomToolbar/HBoxContainer" instance=ExtResource("1_3sr0o")]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_d8flf")
+button_group = SubResource("ButtonGroup_h6vb2")
+texture_normal = ExtResource("3_kxjk2")
+texture_pressed = ExtResource("4_ig0np")
 
-[node name="my_comic_touch" type="TouchScreenButton" parent="BottomToolbar/HBoxContainer/MyComicsButton" groups=["touch_screen_button"]]
-position = Vector2(51, 77)
+[node name="RichTextLabel" parent="MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton" index="0"]
+offset_left = -37.0
+offset_right = 34.0
+
+[node name="my_comic_touch" type="TouchScreenButton" parent="MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton" groups=["touch_screen_button"]]
+position = Vector2(51, 93)
 shape = SubResource("RectangleShape2D_y4vb3")
 
-[node name="AddNewButton" parent="BottomToolbar/HBoxContainer" instance=ExtResource("1_3sr0o")]
+[node name="AddNewButton" parent="MarginContainer/BottomToolbar/HBoxContainer" instance=ExtResource("1_3sr0o")]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_ccewa")
-texture_normal = ExtResource("3_3faw0")
+button_group = SubResource("ButtonGroup_qaq5y")
+texture_normal = ExtResource("5_w8dkv")
+texture_pressed = ExtResource("6_a2uta")
 
-[node name="RichTextLabel" parent="BottomToolbar/HBoxContainer/AddNewButton" index="0"]
+[node name="RichTextLabel" parent="MarginContainer/BottomToolbar/HBoxContainer/AddNewButton" index="0"]
 offset_left = -18.0
 offset_right = 53.0
 text = "[b]Add New[/b]"
 
-[node name="add_new_touch" type="TouchScreenButton" parent="BottomToolbar/HBoxContainer/AddNewButton" groups=["touch_screen_button"]]
-position = Vector2(50, 77)
+[node name="add_new_touch" type="TouchScreenButton" parent="MarginContainer/BottomToolbar/HBoxContainer/AddNewButton" groups=["touch_screen_button"]]
+position = Vector2(50, 93)
 shape = SubResource("RectangleShape2D_y4vb3")
 
-[node name="SettingsButton" parent="BottomToolbar/HBoxContainer" instance=ExtResource("1_3sr0o")]
+[node name="SettingsButton" parent="MarginContainer/BottomToolbar/HBoxContainer" instance=ExtResource("1_3sr0o")]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_8yqpf")
-texture_normal = ExtResource("4_humb4")
+button_group = SubResource("ButtonGroup_fi8ql")
+texture_normal = ExtResource("7_rfvfi")
+texture_pressed = ExtResource("8_bqc0n")
 
-[node name="RichTextLabel" parent="BottomToolbar/HBoxContainer/SettingsButton" index="0"]
+[node name="RichTextLabel" parent="MarginContainer/BottomToolbar/HBoxContainer/SettingsButton" index="0"]
 offset_left = -9.0
 offset_right = 62.0
 text = "[b]Settings[/b]"
 
-[node name="settings_touch" type="TouchScreenButton" parent="BottomToolbar/HBoxContainer/SettingsButton" groups=["touch_screen_button"]]
-position = Vector2(50, 77)
+[node name="settings_touch" type="TouchScreenButton" parent="MarginContainer/BottomToolbar/HBoxContainer/SettingsButton" groups=["touch_screen_button"]]
+position = Vector2(50, 93)
 shape = SubResource("RectangleShape2D_y4vb3")
 
-[node name="MainMiddle" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MainMiddle" type="Control" parent="MarginContainer"]
+layout_mode = 2
 
-[node name="MyComics" type="Control" parent="MainMiddle"]
+[node name="MyComics" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,7 +152,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_8k4yo")
 
-[node name="MyComicsHeader" type="Label" parent="MainMiddle/MyComics"]
+[node name="MyComicsHeader" type="Label" parent="MarginContainer/MainMiddle/MyComics"]
 layout_mode = 1
 offset_left = 60.0
 offset_top = 40.0
@@ -151,7 +163,7 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "My Comics"
 
-[node name="MyComicsScrollContainer" type="ScrollContainer" parent="MainMiddle/MyComics"]
+[node name="MyComicsScrollContainer" type="ScrollContainer" parent="MarginContainer/MainMiddle/MyComics"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,40 +173,40 @@ offset_bottom = -198.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MyComicsVBoxContainer" type="VBoxContainer" parent="MainMiddle/MyComics/MyComicsScrollContainer"]
+[node name="MyComicsVBoxContainer" type="VBoxContainer" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="test_row3" parent="MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="test_row3" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row2" parent="MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="test_row2" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row4" parent="MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="test_row4" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row5" parent="MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="test_row5" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row6" parent="MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="test_row6" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row7" parent="MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="test_row7" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row" parent="MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="test_row" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row8" parent="MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="test_row8" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row9" parent="MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="test_row9" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="SelectedComicsScrollContainer" type="ScrollContainer" parent="MainMiddle/MyComics"]
+[node name="SelectedComicsScrollContainer" type="ScrollContainer" parent="MarginContainer/MainMiddle/MyComics"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -205,46 +217,48 @@ offset_bottom = -198.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SelectedComicsVBoxContainer" type="VBoxContainer" parent="MainMiddle/MyComics/SelectedComicsScrollContainer"]
+[node name="SelectedComicsVBoxContainer" type="VBoxContainer" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="test_row" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row2" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row2" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row3" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row3" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row4" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row4" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row5" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row5" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row6" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row6" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row7" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row7" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row8" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row8" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="test_row9" parent="MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row9" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="AddNew" type="Control" parent="MainMiddle"]
+[node name="AddNew" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="AddNewHeader" type="Label" parent="MainMiddle/AddNew"]
+[node name="AddNewHeader" type="Label" parent="MarginContainer/MainMiddle/AddNew"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -260,7 +274,20 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Add New"
 
-[node name="Settings" type="Control" parent="MainMiddle"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/MainMiddle/AddNew"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 60.0
+offset_top = 199.0
+offset_right = -35.0
+offset_bottom = 256.0
+grow_horizontal = 2
+theme_override_colors/font_placeholder_color = Color(0.498039, 0.498039, 0.498039, 0.498039)
+theme_override_font_sizes/font_size = 35
+placeholder_text = "Search for New Comics"
+
+[node name="Settings" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -270,7 +297,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SettingsHeader" type="Label" parent="MainMiddle/Settings"]
+[node name="SettingsHeader" type="Label" parent="MarginContainer/MainMiddle/Settings"]
 layout_mode = 2
 offset_left = 60.0
 offset_top = 40.0
@@ -281,6 +308,6 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Settings"
 
-[editable path="BottomToolbar/HBoxContainer/MyComicsButton"]
-[editable path="BottomToolbar/HBoxContainer/AddNewButton"]
-[editable path="BottomToolbar/HBoxContainer/SettingsButton"]
+[editable path="MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton"]
+[editable path="MarginContainer/BottomToolbar/HBoxContainer/AddNewButton"]
+[editable path="MarginContainer/BottomToolbar/HBoxContainer/SettingsButton"]
