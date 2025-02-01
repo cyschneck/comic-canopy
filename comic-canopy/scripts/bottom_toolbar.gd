@@ -53,10 +53,10 @@ func on_tab_pressed(selected_button) -> void:
 			my_comics.get_child(0).text = "My Comics"
 			my_comics.get_child(1).visible = true
 			my_comics.get_child(2).visible = false
-			take_screenshot()
+			#take_screenshot()
 		"AddNewButton": 
 			add_new.visible = true
-			take_screenshot()
+			#take_screenshot()
 		"SettingsButton": 
 			settings.visible = true
-			take_screenshot()
+			#take_screenshot()

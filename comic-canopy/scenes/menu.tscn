@@ -12,14 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://cb6g04a1aeei6" path="res://assets/sprites/settings_grey.png" id="7_rfvfi"]
 [ext_resource type="Texture2D" uid="uid://dg0icgvg2heru" path="res://assets/sprites/settings_orange.png" id="8_bqc0n"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_h6vb2"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ln18f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
 size = Vector2(200, 250)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_qaq5y"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_3jds7"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_fi8ql"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_a5qmo"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -92,7 +92,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_h6vb2")
+button_group = SubResource("ButtonGroup_ln18f")
 texture_normal = ExtResource("3_kxjk2")
 texture_pressed = ExtResource("4_ig0np")
 
@@ -108,7 +108,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_qaq5y")
+button_group = SubResource("ButtonGroup_3jds7")
 texture_normal = ExtResource("5_w8dkv")
 texture_pressed = ExtResource("6_a2uta")
 
@@ -125,7 +125,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_fi8ql")
+button_group = SubResource("ButtonGroup_a5qmo")
 texture_normal = ExtResource("7_rfvfi")
 texture_pressed = ExtResource("8_bqc0n")
 
@@ -143,7 +143,6 @@ layout_mode = 2
 
 [node name="MyComics" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,12 +155,13 @@ script = ExtResource("5_8k4yo")
 layout_mode = 1
 offset_left = 60.0
 offset_top = 40.0
-offset_right = 460.0
+offset_right = 1088.0
 offset_bottom = 143.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "My Comics"
+text_overrun_behavior = 3
 
 [node name="MyComicsScrollContainer" type="ScrollContainer" parent="MarginContainer/MainMiddle/MyComics"]
 layout_mode = 1
@@ -251,6 +251,7 @@ layout_mode = 2
 
 [node name="AddNew" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

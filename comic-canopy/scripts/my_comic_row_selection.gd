@@ -18,8 +18,6 @@ func _on_comic_page_link_button_pressed() -> void:
 
 	# update header with comic name
 	var full_comic_name = test_row.name
-	if full_comic_name.length() > 20: # only display the first 20 characters of a long title
-		full_comic_name = full_comic_name.left(20) + "..."
 	comic_header.text = full_comic_name
 	
 	# remove testing rows from selected comics
