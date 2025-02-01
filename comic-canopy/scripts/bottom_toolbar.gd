@@ -2,12 +2,12 @@ extends Node
 
 # Control nodes for three main sections of menu
 @onready var my_comics: Control = %MyComics
-@onready var add_new: Control = %AddNew
+@onready var discover: Control = %Discover
 @onready var settings: Control = %Settings
 
 # access each tab button of the menu
 @onready var my_comics_button: TextureButton = %MyComicsButton
-@onready var add_new_button: TextureButton = %AddNewButton
+@onready var discover_button: TextureButton = %DiscoverButton
 @onready var settings_button: TextureButton = %SettingsButton
 
 func _ready() -> void:
@@ -29,13 +29,13 @@ func setup_functions() -> void:
 func on_touched_area_pressed(TouchArea) -> void:
 	match TouchArea.name:
 		"my_comic_touch": on_tab_pressed(my_comics_button)
-		"add_new_touch": on_tab_pressed(add_new_button)
+		"discover_touch": on_tab_pressed(discover_button)
 		"settings_touch": on_tab_pressed(settings_button)
 
 func on_tab_pressed(selected_button) -> void:
 	# unselected buttons set to DIM_GRAY
 	my_comics_button.modulate = Color.DIM_GRAY
-	add_new_button.modulate = Color.DIM_GRAY
+	discover_button.modulate = Color.DIM_GRAY
 	settings_button.modulate = Color.DIM_GRAY
 
 	# select button to ORANGE
@@ -43,7 +43,7 @@ func on_tab_pressed(selected_button) -> void:
 
 	# set ALL headers visibilty to false
 	my_comics.visible = false
-	add_new.visible = false
+	discover.visible = false
 	settings.visible = false
 	
 	# set seleted button's header to true
@@ -54,8 +54,8 @@ func on_tab_pressed(selected_button) -> void:
 			my_comics.get_child(1).visible = true
 			my_comics.get_child(2).visible = false
 			#take_screenshot()
-		"AddNewButton": 
-			add_new.visible = true
+		"DiscoverButton": 
+			discover.visible = true
 			#take_screenshot()
 		"SettingsButton": 
 			settings.visible = true

@@ -12,14 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://cb6g04a1aeei6" path="res://assets/sprites/settings_grey.png" id="7_rfvfi"]
 [ext_resource type="Texture2D" uid="uid://dg0icgvg2heru" path="res://assets/sprites/settings_orange.png" id="8_bqc0n"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_npv1y"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_kpuur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
 size = Vector2(200, 250)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_chbme"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_6ytl2"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_cebco"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_gsp4p"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -92,7 +92,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_npv1y")
+button_group = SubResource("ButtonGroup_kpuur")
 texture_normal = ExtResource("3_kxjk2")
 texture_pressed = ExtResource("4_ig0np")
 
@@ -104,20 +104,20 @@ offset_right = 34.0
 position = Vector2(51, 93)
 shape = SubResource("RectangleShape2D_y4vb3")
 
-[node name="AddNewButton" parent="MarginContainer/BottomToolbar/HBoxContainer" instance=ExtResource("1_3sr0o")]
+[node name="DiscoverButton" parent="MarginContainer/BottomToolbar/HBoxContainer" instance=ExtResource("1_3sr0o")]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_chbme")
+button_group = SubResource("ButtonGroup_6ytl2")
 texture_normal = ExtResource("5_w8dkv")
 texture_pressed = ExtResource("6_a2uta")
 
-[node name="RichTextLabel" parent="MarginContainer/BottomToolbar/HBoxContainer/AddNewButton" index="0"]
+[node name="RichTextLabel" parent="MarginContainer/BottomToolbar/HBoxContainer/DiscoverButton" index="0"]
 offset_left = -18.0
 offset_right = 53.0
-text = "[b]Add New[/b]"
+text = "[b]Discover[/b]"
 
-[node name="add_new_touch" type="TouchScreenButton" parent="MarginContainer/BottomToolbar/HBoxContainer/AddNewButton" groups=["touch_screen_button"]]
+[node name="discover_touch" type="TouchScreenButton" parent="MarginContainer/BottomToolbar/HBoxContainer/DiscoverButton" groups=["touch_screen_button"]]
 position = Vector2(50, 93)
 shape = SubResource("RectangleShape2D_y4vb3")
 
@@ -125,7 +125,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_cebco")
+button_group = SubResource("ButtonGroup_gsp4p")
 texture_normal = ExtResource("7_rfvfi")
 texture_pressed = ExtResource("8_bqc0n")
 
@@ -248,7 +248,7 @@ layout_mode = 2
 [node name="test_row9" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
-[node name="AddNew" type="Control" parent="MarginContainer/MainMiddle"]
+[node name="Discover" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -258,7 +258,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AddNewHeader" type="Label" parent="MarginContainer/MainMiddle/AddNew"]
+[node name="DiscoverHeader" type="Label" parent="MarginContainer/MainMiddle/Discover"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -272,9 +272,9 @@ grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
-text = "Add New"
+text = "Discover"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/MainMiddle/AddNew"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/MainMiddle/Discover"]
 layout_mode = 1
 offset_left = 109.0
 offset_top = 201.0
@@ -308,5 +308,5 @@ theme_override_font_sizes/font_size = 75
 text = "Settings"
 
 [editable path="MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton"]
-[editable path="MarginContainer/BottomToolbar/HBoxContainer/AddNewButton"]
+[editable path="MarginContainer/BottomToolbar/HBoxContainer/DiscoverButton"]
 [editable path="MarginContainer/BottomToolbar/HBoxContainer/SettingsButton"]
