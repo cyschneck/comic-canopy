@@ -1,9 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dchw2tg4juqnw"]
+[gd_scene load_steps=15 format=3 uid="uid://dchw2tg4juqnw"]
 
 [ext_resource type="PackedScene" uid="uid://xjt5ucf5m4x7" path="res://scenes/tab.tscn" id="1_3sr0o"]
 [ext_resource type="Script" path="res://scripts/bottom_toolbar.gd" id="1_et7sx"]
-[ext_resource type="Texture2D" uid="uid://cyv4nja7imakw" path="res://assets/sprites/comics_grey.png" id="3_kxjk2"]
-[ext_resource type="Texture2D" uid="uid://dilu3we47xg76" path="res://assets/sprites/comics_orange.png" id="4_ig0np"]
 [ext_resource type="Script" path="res://scripts/populate_my_comics.gd" id="5_8k4yo"]
 [ext_resource type="Texture2D" uid="uid://bjr2g5le6q882" path="res://assets/sprites/search_grey.png" id="5_w8dkv"]
 [ext_resource type="Texture2D" uid="uid://byjpq87ja0td2" path="res://assets/sprites/search_orange.png" id="6_a2uta"]
@@ -11,15 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://cr4siadbbx2pq" path="res://scenes/test_specific_comics_grid_container.tscn" id="7_d5vqm"]
 [ext_resource type="Texture2D" uid="uid://cb6g04a1aeei6" path="res://assets/sprites/settings_grey.png" id="7_rfvfi"]
 [ext_resource type="Texture2D" uid="uid://dg0icgvg2heru" path="res://assets/sprites/settings_orange.png" id="8_bqc0n"]
+[ext_resource type="Script" path="res://scripts/search_discover.gd" id="10_o2oin"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_kpuur"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_g8q46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
 size = Vector2(200, 250)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_6ytl2"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_28afw"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_gsp4p"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_geixo"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -92,9 +91,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_kpuur")
-texture_normal = ExtResource("3_kxjk2")
-texture_pressed = ExtResource("4_ig0np")
+button_group = SubResource("ButtonGroup_g8q46")
 
 [node name="RichTextLabel" parent="MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton" index="0"]
 offset_left = -37.0
@@ -108,7 +105,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_6ytl2")
+button_group = SubResource("ButtonGroup_28afw")
 texture_normal = ExtResource("5_w8dkv")
 texture_pressed = ExtResource("6_a2uta")
 
@@ -125,7 +122,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_gsp4p")
+button_group = SubResource("ButtonGroup_geixo")
 texture_normal = ExtResource("7_rfvfi")
 texture_pressed = ExtResource("8_bqc0n")
 
@@ -143,6 +140,7 @@ layout_mode = 2
 
 [node name="MyComics" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -250,13 +248,13 @@ layout_mode = 2
 
 [node name="Discover" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("10_o2oin")
 
 [node name="DiscoverHeader" type="Label" parent="MarginContainer/MainMiddle/Discover"]
 layout_mode = 1
@@ -274,7 +272,8 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Discover"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/MainMiddle/Discover"]
+[node name="InputLine" type="LineEdit" parent="MarginContainer/MainMiddle/Discover"]
+unique_name_in_owner = true
 layout_mode = 1
 offset_left = 109.0
 offset_top = 201.0
@@ -283,8 +282,50 @@ offset_bottom = 258.0
 theme_override_colors/font_placeholder_color = Color(0.498039, 0.498039, 0.498039, 0.498039)
 theme_override_constants/outline_size = 0
 theme_override_constants/caret_width = 0
-theme_override_font_sizes/font_size = 35
-placeholder_text = "Search for New Comics..."
+theme_override_font_sizes/font_size = 50
+placeholder_text = "URL for New Comics..."
+
+[node name="DiscoverScrollContainer" type="ScrollContainer" parent="MarginContainer/MainMiddle/Discover"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 335.0
+offset_bottom = -198.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DiscoverVBoxContainer" type="VBoxContainer" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="test_row" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row2" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row3" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row4" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row5" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row6" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row7" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row8" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
+
+[node name="test_row9" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+layout_mode = 2
 
 [node name="Settings" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
@@ -306,6 +347,8 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 75
 text = "Settings"
+
+[connection signal="text_submitted" from="MarginContainer/MainMiddle/Discover/InputLine" to="MarginContainer/MainMiddle/Discover" method="_on_line_edit_text_submitted"]
 
 [editable path="MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton"]
 [editable path="MarginContainer/BottomToolbar/HBoxContainer/DiscoverButton"]
