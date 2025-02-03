@@ -11,14 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://dg0icgvg2heru" path="res://assets/sprites/settings_orange.png" id="8_bqc0n"]
 [ext_resource type="Script" path="res://scripts/search_discover.gd" id="10_o2oin"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_g8q46"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_edq70"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
 size = Vector2(200, 250)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_28afw"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_df7qa"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_geixo"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_uavnx"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -91,7 +91,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_g8q46")
+button_group = SubResource("ButtonGroup_edq70")
 
 [node name="RichTextLabel" parent="MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton" index="0"]
 offset_left = -37.0
@@ -105,7 +105,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_28afw")
+button_group = SubResource("ButtonGroup_df7qa")
 texture_normal = ExtResource("5_w8dkv")
 texture_pressed = ExtResource("6_a2uta")
 
@@ -122,7 +122,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_geixo")
+button_group = SubResource("ButtonGroup_uavnx")
 texture_normal = ExtResource("7_rfvfi")
 texture_pressed = ExtResource("8_bqc0n")
 
@@ -277,13 +277,30 @@ unique_name_in_owner = true
 layout_mode = 1
 offset_left = 109.0
 offset_top = 201.0
-offset_right = 549.0
-offset_bottom = 258.0
+offset_right = 674.0
+offset_bottom = 278.0
 theme_override_colors/font_placeholder_color = Color(0.498039, 0.498039, 0.498039, 0.498039)
 theme_override_constants/outline_size = 0
 theme_override_constants/caret_width = 0
 theme_override_font_sizes/font_size = 50
 placeholder_text = "URL for New Comics..."
+
+[node name="LoadingImage" type="TextureRect" parent="MarginContainer/MainMiddle/Discover"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -706.0
+offset_right = -56.0
+offset_bottom = -666.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+texture = ExtResource("8_bqc0n")
+expand_mode = 1
 
 [node name="DiscoverScrollContainer" type="ScrollContainer" parent="MarginContainer/MainMiddle/Discover"]
 layout_mode = 1
