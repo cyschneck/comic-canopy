@@ -3,19 +3,17 @@ extends Control
 @onready var input_line: LineEdit = %InputLine
 @onready var discover_v_box_container: VBoxContainer = $DiscoverScrollContainer/DiscoverVBoxContainer
 @onready var loading_image: TextureRect = $LoadingImage
+@onready var popup_panel: PanelContainer = %PopupPanel
 const TEST_MY_COMICS_GRID_CONTAINER = preload("res://scenes/test_my_comics_grid_container.tscn")
 
 var _BASE_URL = ''
+var _ARCHIVE_URL = ''
+var popup_is_yes = false
 
 func _ready() -> void:
 	discover_v_box_container.visible = false
 	loading_image.visible = false
-
-func set_base_url(url_input: String) -> void:
-	_BASE_URL = url_input
-
-func get_base_url() -> String:
-	return _BASE_URL
+	popup_panel.visible = false
 
 func _on_line_edit_text_submitted(url_input: String) -> void:
 	# triggered when enter pressed
@@ -26,7 +24,7 @@ func _on_line_edit_text_submitted(url_input: String) -> void:
 
 	if "http://" not in url_input: url_input = "http://" + url_input
 	if url_input[-1] == "/": url_input = url_input.left(url_input.length() - 1) # remove trailing /
-	set_base_url(url_input)
+	_BASE_URL = url_input
 	# check base URL
 	check_url(url_input)
 
@@ -39,21 +37,42 @@ func check_url(input_url: String) -> void:
 func _on_request_completed(result, response_code, headers, body) -> void:
 	var html = body.get_string_from_utf8()
 	if response_code == 200:
-		var url = get_base_url()
+		var url = _BASE_URL
 		if "archive" in html: url += "/archive"
 		if "archives" in html: url += "/archives"
 		if "archive" not in html and "archives" not in html:
 			print("Not archive link found")
-		print(url)
+		_ARCHIVE_URL = url
 		print("VALID url")
-		var http_request = HTTPRequest.new()
-		add_child(http_request)
-		http_request.request_completed.connect(_on_request_archive_completed)
-		http_request.request(url)
+		loading_image.visible = false
+		popup_panel.visible = true
 	else:
 		loading_image.visible = false
 		print("invalid URL")
 
+func popup_check_archive_link()-> void:
+	popup_panel.visible = false
+	if popup_is_yes == true:
+		loading_image.visible = true
+		populate_archive_link(_ARCHIVE_URL)
+	else:
+		loading_image.visible = true
+		populate_archive_link(_ARCHIVE_URL)
+
+func _on_yes_button_pressed() -> void:
+	popup_check_archive_link()
+	popup_is_yes = true
+
+func _on_no_button_pressed() -> void:
+	popup_check_archive_link()
+	popup_is_yes = false
+
+func populate_archive_link(url: String) -> void:
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.request_completed.connect(_on_request_archive_completed)
+	http_request.request(url)
+	
 func _on_request_archive_completed(result, response_code, headers, body) -> void:
 	var html = body.get_string_from_utf8()
 	var body_html = html.split("\n")

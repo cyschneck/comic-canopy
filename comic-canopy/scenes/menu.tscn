@@ -1,24 +1,28 @@
-[gd_scene load_steps=15 format=3 uid="uid://dchw2tg4juqnw"]
+[gd_scene load_steps=16 format=3 uid="uid://dchw2tg4juqnw"]
 
 [ext_resource type="PackedScene" uid="uid://xjt5ucf5m4x7" path="res://scenes/tab.tscn" id="1_3sr0o"]
 [ext_resource type="Script" path="res://scripts/bottom_toolbar.gd" id="1_et7sx"]
 [ext_resource type="Script" path="res://scripts/populate_my_comics.gd" id="5_8k4yo"]
 [ext_resource type="Texture2D" uid="uid://bjr2g5le6q882" path="res://assets/sprites/search_grey.png" id="5_w8dkv"]
 [ext_resource type="Texture2D" uid="uid://byjpq87ja0td2" path="res://assets/sprites/search_orange.png" id="6_a2uta"]
-[ext_resource type="PackedScene" uid="uid://do08ivw8plaev" path="res://scenes/test_my_comics_grid_container.tscn" id="7_43mfh"]
+[ext_resource type="PackedScene" uid="uid://ddm07dmqmtcc1" path="res://scenes/test_my_comics_grid_container.tscn" id="7_43mfh"]
 [ext_resource type="PackedScene" uid="uid://cr4siadbbx2pq" path="res://scenes/test_specific_comics_grid_container.tscn" id="7_d5vqm"]
 [ext_resource type="Texture2D" uid="uid://cb6g04a1aeei6" path="res://assets/sprites/settings_grey.png" id="7_rfvfi"]
 [ext_resource type="Texture2D" uid="uid://dg0icgvg2heru" path="res://assets/sprites/settings_orange.png" id="8_bqc0n"]
 [ext_resource type="Script" path="res://scripts/search_discover.gd" id="10_o2oin"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_edq70"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ytolf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
 size = Vector2(200, 250)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_df7qa"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_cbic5"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_uavnx"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_iifsf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4javi"]
+bg_color = Color(0, 0, 0, 1)
+corner_detail = 1
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -91,7 +95,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_edq70")
+button_group = SubResource("ButtonGroup_ytolf")
 
 [node name="RichTextLabel" parent="MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton" index="0"]
 offset_left = -37.0
@@ -105,7 +109,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_df7qa")
+button_group = SubResource("ButtonGroup_cbic5")
 texture_normal = ExtResource("5_w8dkv")
 texture_pressed = ExtResource("6_a2uta")
 
@@ -122,7 +126,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_uavnx")
+button_group = SubResource("ButtonGroup_iifsf")
 texture_normal = ExtResource("7_rfvfi")
 texture_pressed = ExtResource("8_bqc0n")
 
@@ -140,7 +144,6 @@ layout_mode = 2
 
 [node name="MyComics" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -166,20 +169,24 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 199.0
-offset_bottom = -193.0
+offset_top = 200.0
+offset_bottom = -192.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MyComicsVBoxContainer" type="VBoxContainer" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="test_row3" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
+[node name="test_row" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
 [node name="test_row2" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
+layout_mode = 2
+
+[node name="test_row3" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
 [node name="test_row4" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
@@ -192,9 +199,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="test_row7" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
-layout_mode = 2
-
-[node name="test_row" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
 [node name="test_row8" parent="MarginContainer/MainMiddle/MyComics/MyComicsScrollContainer/MyComicsVBoxContainer" instance=ExtResource("7_43mfh")]
@@ -248,6 +252,7 @@ layout_mode = 2
 
 [node name="Discover" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -286,6 +291,7 @@ theme_override_font_sizes/font_size = 50
 placeholder_text = "URL for New Comics..."
 
 [node name="LoadingImage" type="TextureRect" parent="MarginContainer/MainMiddle/Discover"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -344,6 +350,64 @@ layout_mode = 2
 [node name="test_row9" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
 layout_mode = 2
 
+[node name="PopupPanel" type="PanelContainer" parent="MarginContainer/MainMiddle/Discover"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 265.0
+offset_top = 430.0
+offset_right = 965.0
+offset_bottom = 880.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4javi")
+
+[node name="PopUpMarginContainer" type="MarginContainer" parent="MarginContainer/MainMiddle/Discover/PopupPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MainMiddle/Discover/PopupPanel/PopUpMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer/MainMiddle/Discover/PopupPanel/PopUpMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Potential Archive Link Found:"
+
+[node name="LinkButton" type="LinkButton" parent="MarginContainer/MainMiddle/Discover/PopupPanel/PopUpMarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+action_mode = 0
+text = "https://testing-comic.com/archive"
+underline = 2
+uri = "https://xkcd.com/"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MainMiddle/Discover/PopupPanel/PopUpMarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="YesButton" type="LinkButton" parent="MarginContainer/MainMiddle/Discover/PopupPanel/PopUpMarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+action_mode = 0
+text = "YEPPERS"
+underline = 2
+
+[node name="NoButton" type="LinkButton" parent="MarginContainer/MainMiddle/Discover/PopupPanel/PopUpMarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+action_mode = 0
+text = "NOPE"
+underline = 2
+
 [node name="Settings" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
 visible = false
@@ -366,6 +430,8 @@ theme_override_font_sizes/font_size = 75
 text = "Settings"
 
 [connection signal="text_submitted" from="MarginContainer/MainMiddle/Discover/InputLine" to="MarginContainer/MainMiddle/Discover" method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="MarginContainer/MainMiddle/Discover/PopupPanel/PopUpMarginContainer/VBoxContainer/HBoxContainer/YesButton" to="MarginContainer/MainMiddle/Discover" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MainMiddle/Discover/PopupPanel/PopUpMarginContainer/VBoxContainer/HBoxContainer/NoButton" to="MarginContainer/MainMiddle/Discover" method="_on_no_button_pressed"]
 
 [editable path="MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton"]
 [editable path="MarginContainer/BottomToolbar/HBoxContainer/DiscoverButton"]

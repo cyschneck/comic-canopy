@@ -1,25 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://do08ivw8plaev"]
+[gd_scene load_steps=4 format=3 uid="uid://ddm07dmqmtcc1"]
 
-[ext_resource type="Script" path="res://scripts/my_comic_row_selection.gd" id="1_blmp4"]
-[ext_resource type="Texture2D" uid="uid://blbap47a54j41" path="res://assets/sprites/comic_list_icon.jpg" id="1_cpq38"]
+[ext_resource type="Texture2D" uid="uid://blbap47a54j41" path="res://assets/sprites/comic_list_icon.jpg" id="1_vxbcu"]
+[ext_resource type="Texture2D" uid="uid://bp1ukog5dsdam" path="res://assets/sprites/tooltip_black.png" id="2_li4ot"]
+[ext_resource type="Texture2D" uid="uid://drs2dkxps15fw" path="res://assets/sprites/tooltip_orange.png" id="3_acdou"]
 
 [node name="test_row" type="GridContainer"]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 250.0
 grow_horizontal = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_horizontal = 3
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 0
-columns = 3
-script = ExtResource("1_blmp4")
+columns = 4
 
 [node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(250, 200)
+custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_horizontal = 2
-texture = ExtResource("1_cpq38")
+texture = ExtResource("1_vxbcu")
 expand_mode = 1
 stretch_mode = 5
 
@@ -36,8 +35,6 @@ text = "
 [b]Comics Name[/b]
 [i]Artist Name, Writer Name[/i]
 Last read XX days ago"
-fit_content = true
-autowrap_mode = 2
 
 [node name="ComicPageLinkButton" type="LinkButton" parent="RichTextLabel"]
 layout_mode = 1
@@ -50,26 +47,29 @@ action_mode = 0
 underline = 1
 
 [node name="ContinueLinkButton" type="LinkButton" parent="."]
-custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 30
-action_mode = 0
+theme_override_font_sizes/font_size = 25
 underline = 2
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="ContinueLinkButton"]
-custom_minimum_size = Vector2(0, 40)
+[node name="Label" type="Label" parent="ContinueLinkButton"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/font_size = 28
 text = "Continue #XX"
+horizontal_alignment = 1
 
-[connection signal="pressed" from="RichTextLabel/ComicPageLinkButton" to="." method="_on_comic_page_link_button_pressed"]
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("2_li4ot")
+texture_pressed = ExtResource("3_acdou")
+stretch_mode = 3

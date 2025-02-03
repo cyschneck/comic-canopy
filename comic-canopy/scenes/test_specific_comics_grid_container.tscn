@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cr4siadbbx2pq"]
+[gd_scene load_steps=4 format=3 uid="uid://cr4siadbbx2pq"]
 
 [ext_resource type="Texture2D" uid="uid://blbap47a54j41" path="res://assets/sprites/comic_list_icon.jpg" id="1_iejau"]
+[ext_resource type="Texture2D" uid="uid://bp1ukog5dsdam" path="res://assets/sprites/tooltip_black.png" id="2_4psf0"]
+[ext_resource type="Texture2D" uid="uid://drs2dkxps15fw" path="res://assets/sprites/tooltip_orange.png" id="3_6m5aw"]
 
 [node name="test_row" type="GridContainer"]
 anchors_preset = 10
@@ -9,8 +11,7 @@ offset_bottom = 250.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 0
-columns = 3
+columns = 4
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(250, 250)
@@ -63,3 +64,10 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 28
 text = "#XXX"
 horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("2_4psf0")
+texture_pressed = ExtResource("3_6m5aw")
+stretch_mode = 3
