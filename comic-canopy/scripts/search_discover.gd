@@ -57,7 +57,7 @@ func popup_check_archive_link()-> void:
 		populate_archive_link(_ARCHIVE_URL)
 	else:
 		loading_image.visible = true
-		populate_archive_link(_ARCHIVE_URL)
+		populate_archive_link(_BASE_URL)
 
 func _on_yes_button_pressed() -> void:
 	popup_check_archive_link()
@@ -80,13 +80,15 @@ func _on_request_archive_completed(result, response_code, headers, body) -> void
 	for child in discover_v_box_container.get_children():
 		child.queue_free()
 
+	var page_num = 0
 	for line in body_html:
 		if "a href=" in line:
-			print(line)
 			var discover_row = TEST_COMIC_ROW_PREFAB.instantiate()
 			discover_row.name = line
 			discover_row.get_child(1).text = line
 			# edit link button text
+			page_num += 1
+			discover_row.get_child(2).get_child(0).text = "#" + str(page_num)
 			#discover_row.get_child(2).uri = "https://xkcd.com/3043/"
 			discover_v_box_container.add_child(discover_row)
 

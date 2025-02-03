@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dchw2tg4juqnw"]
+[gd_scene load_steps=15 format=3 uid="uid://dchw2tg4juqnw"]
 
 [ext_resource type="PackedScene" uid="uid://xjt5ucf5m4x7" path="res://scenes/tab.tscn" id="1_3sr0o"]
 [ext_resource type="Script" path="res://scripts/bottom_toolbar.gd" id="1_et7sx"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bjr2g5le6q882" path="res://assets/sprites/search_grey.png" id="5_w8dkv"]
 [ext_resource type="Texture2D" uid="uid://byjpq87ja0td2" path="res://assets/sprites/search_orange.png" id="6_a2uta"]
 [ext_resource type="PackedScene" uid="uid://ddm07dmqmtcc1" path="res://scenes/test_comic_row_prefab.tscn" id="7_43mfh"]
-[ext_resource type="PackedScene" uid="uid://dgy85hielr3bu" path="res://scenes/test_specific_comics_grid_container.tscn" id="7_d5vqm"]
 [ext_resource type="Texture2D" uid="uid://cb6g04a1aeei6" path="res://assets/sprites/settings_grey.png" id="7_rfvfi"]
 [ext_resource type="Texture2D" uid="uid://dg0icgvg2heru" path="res://assets/sprites/settings_orange.png" id="8_bqc0n"]
 [ext_resource type="Script" path="res://scripts/search_discover.gd" id="10_o2oin"]
@@ -223,31 +222,31 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="test_row" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row2" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row2" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row3" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row3" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row4" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row4" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row5" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row5" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row6" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row6" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row7" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row7" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row8" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row8" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row9" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row9" parent="MarginContainer/MainMiddle/MyComics/SelectedComicsScrollContainer/SelectedComicsVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
 [node name="Discover" type="Control" parent="MarginContainer/MainMiddle"]
@@ -323,31 +322,31 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="test_row" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row2" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row2" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row3" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row3" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row4" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row4" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row5" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row5" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row6" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row6" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row7" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row7" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row8" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row8" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
-[node name="test_row9" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_d5vqm")]
+[node name="test_row9" parent="MarginContainer/MainMiddle/Discover/DiscoverScrollContainer/DiscoverVBoxContainer" instance=ExtResource("7_43mfh")]
 layout_mode = 2
 
 [node name="PopupPanel" type="PanelContainer" parent="MarginContainer/MainMiddle/Discover"]
