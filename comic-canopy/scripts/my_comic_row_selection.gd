@@ -2,7 +2,7 @@ extends GridContainer
 
 # reference My Comic row being used by this script
 @onready var test_row: GridContainer = $"."
-const TEST_SPECIFIC_COMICS_GRID_CONTAINER = preload("res://scenes/test_specific_comics_grid_container.tscn")
+const TEST_COMIC_ROW_PREFAB = preload("res://scenes/test_comic_row_prefab.tscn")
 
 # testing random number generator
 var rng = RandomNumberGenerator.new()
@@ -27,7 +27,7 @@ func _on_comic_page_link_button_pressed() -> void:
 	# add comic rows for each comic saved
 	for page_num in comic_pages:
 		# add new "test_row" to comics grid
-		var page_row = TEST_SPECIFIC_COMICS_GRID_CONTAINER.instantiate()
+		var page_row = TEST_COMIC_ROW_PREFAB.instantiate()
 		page_row.name = str(page_num)
 
 		# edit RichTextLabel with specific comic info

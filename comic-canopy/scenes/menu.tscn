@@ -5,20 +5,20 @@
 [ext_resource type="Script" path="res://scripts/populate_my_comics.gd" id="5_8k4yo"]
 [ext_resource type="Texture2D" uid="uid://bjr2g5le6q882" path="res://assets/sprites/search_grey.png" id="5_w8dkv"]
 [ext_resource type="Texture2D" uid="uid://byjpq87ja0td2" path="res://assets/sprites/search_orange.png" id="6_a2uta"]
-[ext_resource type="PackedScene" uid="uid://ddm07dmqmtcc1" path="res://scenes/test_my_comics_grid_container.tscn" id="7_43mfh"]
-[ext_resource type="PackedScene" uid="uid://cr4siadbbx2pq" path="res://scenes/test_specific_comics_grid_container.tscn" id="7_d5vqm"]
+[ext_resource type="PackedScene" uid="uid://ddm07dmqmtcc1" path="res://scenes/test_comic_row_prefab.tscn" id="7_43mfh"]
+[ext_resource type="PackedScene" uid="uid://dgy85hielr3bu" path="res://scenes/test_specific_comics_grid_container.tscn" id="7_d5vqm"]
 [ext_resource type="Texture2D" uid="uid://cb6g04a1aeei6" path="res://assets/sprites/settings_grey.png" id="7_rfvfi"]
 [ext_resource type="Texture2D" uid="uid://dg0icgvg2heru" path="res://assets/sprites/settings_orange.png" id="8_bqc0n"]
 [ext_resource type="Script" path="res://scripts/search_discover.gd" id="10_o2oin"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ytolf"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_cym84"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
 size = Vector2(200, 250)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_cbic5"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_7vvr0"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_iifsf"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ss2js"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4javi"]
 bg_color = Color(0, 0, 0, 1)
@@ -95,7 +95,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_ytolf")
+button_group = SubResource("ButtonGroup_cym84")
 
 [node name="RichTextLabel" parent="MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton" index="0"]
 offset_left = -37.0
@@ -109,7 +109,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_cbic5")
+button_group = SubResource("ButtonGroup_7vvr0")
 texture_normal = ExtResource("5_w8dkv")
 texture_pressed = ExtResource("6_a2uta")
 
@@ -126,7 +126,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_iifsf")
+button_group = SubResource("ButtonGroup_ss2js")
 texture_normal = ExtResource("7_rfvfi")
 texture_pressed = ExtResource("8_bqc0n")
 

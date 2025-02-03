@@ -4,7 +4,7 @@ extends Control
 @onready var discover_v_box_container: VBoxContainer = $DiscoverScrollContainer/DiscoverVBoxContainer
 @onready var loading_image: TextureRect = $LoadingImage
 @onready var popup_panel: PanelContainer = %PopupPanel
-const TEST_MY_COMICS_GRID_CONTAINER = preload("res://scenes/test_my_comics_grid_container.tscn")
+const TEST_COMIC_ROW_PREFAB = preload("res://scenes/test_comic_row_prefab.tscn")
 
 var _BASE_URL = ''
 var _ARCHIVE_URL = ''
@@ -83,7 +83,7 @@ func _on_request_archive_completed(result, response_code, headers, body) -> void
 	for line in body_html:
 		if "a href=" in line:
 			print(line)
-			var discover_row = TEST_MY_COMICS_GRID_CONTAINER.instantiate()
+			var discover_row = TEST_COMIC_ROW_PREFAB.instantiate()
 			discover_row.name = line
 			discover_row.get_child(1).text = line
 			# edit link button text

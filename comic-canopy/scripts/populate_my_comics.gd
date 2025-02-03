@@ -1,7 +1,7 @@
 extends Control
 
 @onready var my_comics_v_box_container: VBoxContainer = %MyComicsVBoxContainer
-const TEST_MY_COMICS_GRID_CONTAINER = preload("res://scenes/test_my_comics_grid_container.tscn")
+const TEST_COMIC_ROW_PREFAB = preload("res://scenes/test_comic_row_prefab.tscn")
 
 var comic_archive = ["sci-fi comic",
 					"cat comic",
@@ -28,7 +28,7 @@ func _ready() -> void:
 	# add comic rows for each comic saved
 	for comic_name in comic_archive:
 		# add new "test_row" to comics grid
-		var comic_row = TEST_MY_COMICS_GRID_CONTAINER.instantiate()
+		var comic_row = TEST_COMIC_ROW_PREFAB.instantiate()
 		comic_row.name = comic_name.capitalize()
 
 		# edit RichTextLabel with specific comic info

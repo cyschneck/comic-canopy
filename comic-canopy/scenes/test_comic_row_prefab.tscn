@@ -32,9 +32,8 @@ theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
 text = "
-[b]Comics Name[/b]
-[i]Artist Name, Writer Name[/i]
-Last read XX days ago"
+[b]Page XXX[/b]
+MM DD, YYYY"
 
 [node name="ComicPageLinkButton" type="LinkButton" parent="RichTextLabel"]
 layout_mode = 1
@@ -64,7 +63,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 28
-text = "Continue #XX"
+text = "#XXX"
 horizontal_alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="."]
