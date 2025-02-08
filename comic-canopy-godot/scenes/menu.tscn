@@ -10,14 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://dg0icgvg2heru" path="res://assets/sprites/settings_orange.png" id="8_bqc0n"]
 [ext_resource type="Script" path="res://scripts/search_discover.gd" id="10_o2oin"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_cym84"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_yx4v1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4vb3"]
 size = Vector2(200, 250)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_7vvr0"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_sf2t0"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ss2js"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_vuxl5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4javi"]
 bg_color = Color(0, 0, 0, 1)
@@ -94,7 +94,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_cym84")
+button_group = SubResource("ButtonGroup_yx4v1")
 
 [node name="RichTextLabel" parent="MarginContainer/BottomToolbar/HBoxContainer/MyComicsButton" index="0"]
 offset_left = -37.0
@@ -108,7 +108,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_7vvr0")
+button_group = SubResource("ButtonGroup_sf2t0")
 texture_normal = ExtResource("5_w8dkv")
 texture_pressed = ExtResource("6_a2uta")
 
@@ -125,7 +125,7 @@ shape = SubResource("RectangleShape2D_y4vb3")
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-button_group = SubResource("ButtonGroup_ss2js")
+button_group = SubResource("ButtonGroup_vuxl5")
 texture_normal = ExtResource("7_rfvfi")
 texture_pressed = ExtResource("8_bqc0n")
 
@@ -143,6 +143,7 @@ layout_mode = 2
 
 [node name="MyComics" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -251,7 +252,6 @@ layout_mode = 2
 
 [node name="Discover" type="Control" parent="MarginContainer/MainMiddle"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -308,6 +308,8 @@ texture = ExtResource("8_bqc0n")
 expand_mode = 1
 
 [node name="DiscoverScrollContainer" type="ScrollContainer" parent="MarginContainer/MainMiddle/Discover"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -351,6 +353,7 @@ layout_mode = 2
 
 [node name="PopupPanel" type="PanelContainer" parent="MarginContainer/MainMiddle/Discover"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 offset_left = 265.0
 offset_top = 430.0

@@ -1,7 +1,7 @@
 extends Control
 
 @onready var input_line: LineEdit = %InputLine
-@onready var discover_v_box_container: VBoxContainer = $DiscoverScrollContainer/DiscoverVBoxContainer
+@onready var discover_scroll_container: ScrollContainer = $DiscoverScrollContainer
 @onready var loading_image: TextureRect = $LoadingImage
 @onready var popup_panel: PanelContainer = %PopupPanel
 const TEST_COMIC_ROW_PREFAB = preload("res://scenes/test_comic_row_prefab.tscn")
@@ -11,7 +11,7 @@ var _ARCHIVE_URL = ''
 var popup_is_yes = false
 
 func _ready() -> void:
-	discover_v_box_container.visible = false
+	discover_scroll_container.visible = false
 	loading_image.visible = false
 	popup_panel.visible = false
 
@@ -19,7 +19,7 @@ func _on_line_edit_text_submitted(url_input: String) -> void:
 	# triggered when enter pressed
 	input_line.text = "" # remove input after submitted
 	loading_image.visible = true
-	discover_v_box_container.visible = false # set container false for each new search
+	discover_scroll_container.visible = false # set container false for each new search
 	print(url_input)
 
 	if "http://" not in url_input: url_input = "http://" + url_input
@@ -77,7 +77,7 @@ func _on_request_archive_completed(result, response_code, headers, body) -> void
 	var html = body.get_string_from_utf8()
 	var body_html = html.split("\n")
 	
-	for child in discover_v_box_container.get_children():
+	for child in discover_scroll_container.get_child(0).get_children():
 		child.queue_free()
 
 	var page_num = 0
@@ -90,7 +90,7 @@ func _on_request_archive_completed(result, response_code, headers, body) -> void
 			page_num += 1
 			discover_row.get_child(2).get_child(0).text = "#" + str(page_num)
 			#discover_row.get_child(2).uri = "https://xkcd.com/3043/"
-			discover_v_box_container.add_child(discover_row)
+			discover_scroll_container.get_child(0).add_child(discover_row)
 
 	loading_image.visible = false
-	discover_v_box_container.visible = true
+	discover_scroll_container.visible = true
