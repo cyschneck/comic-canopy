@@ -1,5 +1,5 @@
 body {
-    background-color: #001524; /* page background color */
+    background-color: #1E1E1E; /* page background color */
     color: #F7F3E3; /*text color*/
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*font*/
     margin-top: 8px;
@@ -16,7 +16,7 @@ h1 {
     color: #F77F00; /*header color*/
     font-size: 2em;
     font-weight: bold;
-    margin-block: 0.67em;
+    margin-bottom: 15px; /*spacing between paragraphs*/
 }
 
 h2 {
@@ -39,13 +39,49 @@ a {
     cursor: pointer; /*cursor on hover*/
 }
 
-#recommendations li {
-    border-radius: 0.25rem;
-    background-color: red;    
+.recommendations-list div {
+    border-color: #F77F00;
+    border-radius: 10px;
+    border-style: solid;
+    margin-bottom: 15px; /*spacing between divs*/
 }
 
-.rec-image {
+/*navigation menu*/
+.header-main {
+    background-color: red;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-main-nav {
+    background-color: blue;
+    width: fit-content;
+    height: 100%;
+}
+
+.header-main-nav ul {
+
+}
+
+.header-main-nav ul li {
+    display: inline;
+    float: left;
+}
+
+.header-main-nav ul li a {
+    padding: 0px 10px 0px 10px;
+    line-height: 70px; /*center based on height of nav bar*/
+}
+
+.header-main-logo {
     background-color: green;
-    width: 60px;
-    height: 60px;
+    width: fit-content;
+    height: 100%;
+    display: flex;
+}
+
+.header-main-logo img {
+    height: 70px; /*fixed height for nav bar logo*/
+    align-self: center; /*align logo in the middile*/
 }

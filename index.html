@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +8,16 @@
     <title>Comic Canopy</title>
 </head>
 <body> 
-    <header>
-        <h2>Comic Canopy</h2>
-        <nav>
-            <ul>
-                <li><a href="profile.html">Profile Page</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
-        </nav>
+    <header class="header-main">
+        <div class="header-main-logo">
+            <a href="index.html"><img src="assets/Acorn_CC.png" alt="cc-logo"></a>
+            <nav class="header-main-nav">
+                <ul>
+                    <li><a href="profile.html">Profile Page</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section id="welcome">
@@ -31,23 +33,21 @@
 
     <section id="recommendations">
         <h2>Recommendations</h2>
-        <ul>
-            <li>
-                <div class="rec-image"><img src="assets/navigation.png" alt="comic image" /></div>
-                <h3><a href="https://xkcd.com">xkcd</href></a></h3>
-                <p>This is a comic about xkcd 1</p>
-            </li>
-            <li>
-                <div class="rec-image"><img src="assets/navigation.png" alt="comic image" /></div>
-                <h3><a href="https://xkcd.com">Also xkcd</href></a></h3>
-                <p>This is a comic about xkcd 2</p>
-            </li>
-            <li>
-                <div class="rec-image"><img src="assets/navigation.png" alt="comic image" /></div>
-                <h3><a href="https://xkcd.com">As well xkcd</href></a></h3>
-                <p>This is a comic about xkcd 2</p>
-            </li>
-        </ul>
+        <section class="recommendations-list">
+
+            <div class="reco-1">
+                <h2><a href="https//xkcd.com">XCKD</a></h2>
+            </div>
+                
+            <div class="reco-2">
+                <h2><a href="https//xkcd.com">XCKD</a></h2>
+            </div>
+
+            <div class="reco-3">
+                <h2><a href="https//xkcd.com">XCKD</a></h2>
+            </div>
+
+        </section>
     </section>
 
 </body>
