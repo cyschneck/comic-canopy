@@ -35,9 +35,11 @@ h3 {
 
 a {
     color: #F77F00; /*link color*/
-    text-decoration: underline; /*underline links*/
+    text-decoration: none; /*no underline for links*/
     cursor: pointer; /*cursor on hover*/
 }
+
+/*formmating recommendations list on home page*/
 
 .recommendations-list div {
     border-color: #F77F00;
@@ -46,22 +48,27 @@ a {
     margin-bottom: 15px; /*spacing between divs*/
 }
 
+.recommendations-list div a, p {
+    padding: 0px 10px 0px 10px; /*adding padding around words in recommendation box*/
+}
+
+.recommendations-list div a:hover {
+    color:  #F7F3E3; /*hover text color*/
+}
+
 /*navigation menu*/
 .header-main {
-    background-color: red;
-    height: 70px;
+    border-color: #F77F00;
+    border-style: solid;
+    height: 80px;
     display: flex;
     justify-content: space-between;
 }
 
 .header-main-nav {
-    background-color: blue;
+    /*background-color: blue;*/
     width: fit-content;
     height: 100%;
-}
-
-.header-main-nav ul {
-
 }
 
 .header-main-nav ul li {
@@ -71,17 +78,23 @@ a {
 
 .header-main-nav ul li a {
     padding: 0px 10px 0px 10px;
-    line-height: 70px; /*center based on height of nav bar*/
+    line-height: 80px; /*center based on height of nav bar*/
+    display: block;
+    height: 100%; /*allow link selection below text*/
+}
+
+.header-main-nav ul li a:hover {
+    color:  #F7F3E3; /*hover text color*/
 }
 
 .header-main-logo {
-    background-color: green;
+    /*background-color: green;*/
     width: fit-content;
     height: 100%;
     display: flex;
 }
 
 .header-main-logo img {
-    height: 70px; /*fixed height for nav bar logo*/
+    height: 80px; /*fixed height for nav bar logo*/
     align-self: center; /*align logo in the middile*/
 }
