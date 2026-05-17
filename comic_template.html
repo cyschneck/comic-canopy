@@ -5,21 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/comic_page.css">
     <title>Comic Canopy</title>
 </head>
 <body>
 
-        <header class="header-main">
+    <header class="header-main">
         <div class="header-main-logo">
             <a href="index.html"><img src="assets/Acorn_CC.png" alt="cc-logo"></a>
             <nav class="header-main-nav">
                 <ul>
                     <li><a href="profile.html">Profile</a></li>
                     <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="comic_template.html">Testing</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <section id="welcome">
+        <section id="comic_header">
+            <img src="assets/Acorn_CC.png" alt="comic image" />
+            <section id="name_author">
+                <h1>Comic Name</h1>
+                <h3>Author Name, Artist Name</h3>
+            </section>
+        </section>
+        <p><b>About:</b></p>
+        <p>This is a place to put the general about this comic section, but it will be pretty long so it would be good to be able to have the option to collapse the text if it is getting to long, just like this actually. A text that is more than four or five rows should be collapsed down to prevent it from taking up too much of the screen</p>
+    </section>
+
+    <table>
+        <tr class="comic_read">
+            <td class="comic_page_details">
+                <h3>Page 1</h3>
+                <p>https://testing.com/comic/page-1</p>
+            </td>
+            <td>Continue Reading</td>
+        </tr>
+        <tr class="comic_read">
+            <td class="comic_page_details">
+                <h3>Page 2</h3>
+                <p>https://testing.com/comic/page-2</p>
+            </td>
+            <td>Continue Reading</td>
+        </tr>
+        <tr class="comic_unread">
+            <td class="comic_page_details">
+                <h3>Page 3</h3>
+                <p>https://testing.com/comic/page-3</p>
+            </td>
+            <td>Continue Reading</td>
+        </tr>
+    </table>
     
 </body>
 </html>

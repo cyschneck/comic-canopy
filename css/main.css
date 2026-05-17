@@ -12,6 +12,10 @@ p {
     margin-bottom: 15px; /*spacing between paragraphs*/
 }
 
+b {
+    font-weight: bold;
+}
+
 h1 {
     color: #F77F00; /*header color*/
     font-size: 2em;

@@ -1,0 +1,52 @@
+#comic_header {
+    background-color: blue;
+    height: 100px;
+    display: flex;
+    justify-content: left; /*horizontal*/
+    align-items: center; /*vertical*/
+    padding: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+#comic_header img {
+    max-height:100%;
+    border: solid;
+    border-color: black;
+    margin: 15px;
+    border-radius:50%;
+}
+
+#comic_header #name_author {
+    max-height:100%;
+    line-height: 15px; /*spacing between author/comic name*/
+}
+
+#comic_header #name_author h3 {
+    color:  #F7F3E3; 
+}
+
+table, th, td {
+    width: 100%;
+    border: solid;
+    border-color: #F7F3E3;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+tr:hover {
+    background-color: #f7f3e32e;
+}
+
+.comic_page_details p {
+    margin-top:-15px; /*reduce space between page and url*/
+}
+
+.comic_read {
+    background-color: #2f3235;
+}
+
+.comic_unread {
+    background-color: #838c96;
+}
