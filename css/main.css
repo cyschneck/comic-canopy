@@ -2,9 +2,7 @@ body {
     background-color: #1E1E1E; /* page background color */
     color: #F7F3E3; /*text color*/
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*font*/
-    margin-top: 8px;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin: 0px;
 } 
 
 p {
@@ -41,23 +39,6 @@ a {
     color: #F77F00; /*link color*/
     text-decoration: none; /*no underline for links*/
     cursor: pointer; /*cursor on hover*/
-}
-
-/*formmating recommendations list on home page*/
-
-.recommendations-list div {
-    border-color: #F77F00;
-    border-radius: 10px;
-    border-style: solid;
-    margin-bottom: 15px; /*spacing between divs*/
-}
-
-.recommendations-list div a, p {
-    padding: 0px 10px 0px 10px; /*adding padding around words in recommendation box*/
-}
-
-.recommendations-list div a:hover {
-    color:  #F7F3E3; /*hover text color*/
 }
 
 /*navigation menu*/

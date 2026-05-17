@@ -1,0 +1,22 @@
+/*css for recommendations page*/
+
+#recommendations {
+    margin-top: 8px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.recommendations-list div {
+    border-color: #F77F00;
+    border-radius: 10px;
+    border-style: solid;
+    margin-bottom: 15px; /*spacing between divs*/
+}
+
+.recommendations-list div a, p {
+    padding: 0px 10px 0px 10px; /*adding padding around words in recommendation box*/
+}
+
+.recommendations-list div a:hover {
+    color:  #F7F3E3; /*hover text color*/
+}
