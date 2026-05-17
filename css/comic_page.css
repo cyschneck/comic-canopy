@@ -1,16 +1,19 @@
+body {
+    /*full bleed to right and left*/
+    margin: 0px;
+} 
+
 #comic_header {
-    background-color: blue;
+    background-color: rgb(85, 85, 85);
     height: 100px;
     display: flex;
     justify-content: left; /*horizontal*/
     align-items: center; /*vertical*/
-    padding: 10px;
-    margin-bottom: 20px;
-    margin-top: 20px;
 }
 
 #comic_header img {
-    max-height:100%;
+    background-color: white;
+    max-height: 80%;
     border: solid;
     border-color: black;
     margin: 15px;
@@ -18,7 +21,7 @@
 }
 
 #comic_header #name_author {
-    max-height:100%;
+    max-height: 80%;
     line-height: 15px; /*spacing between author/comic name*/
     padding-top: 20px;
     padding-left: 10px;
@@ -35,27 +38,101 @@
     white-space: nowrap;
 }
 
+#about_comic {
+    /*about the comic section*/
+    margin-top: 8px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 table, th, td {
     width: 100%;
     border-top: 1.5px solid #f7f3e3a5; 
+    border-bottom: 1.5px solid #f7f3e3a5; 
     padding: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 tr:hover {
     background-color: #f7f3e32e;
 }
 
+table td:nth-child(1) {
+    /*dedicate most of the space to the first column*/
+    /*background-color: red;*/
+    width: 80%;
+}
+
+table td:nth-child(2) {
+    /*background-color: green;*/
+    width: 15%;
+}
+
+table td:nth-child(3) {
+    /*background-color: blue;*/
+    width: 5%;
+}
+
 .comic_page_details p {
+    /*URL below page number*/
     margin-top:-15px; /*reduce space between page and url*/
     font-size: 12px;
+    text-decoration: underline;
 }
 
 .comic_read {
+    /* color for a comic that has been read*/
     background-color: #2f3235;
 }
 
 .comic_unread {
-    background-color: #727a82;
+    /* color for a comic that not been read*/
+    background-color: #6e6d66;
+}
+
+/* Dropdown Button */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #F77F00;
+    padding: 15px;
+    font-size: 15px;
+    border: none;
+}
+
+.dropdown-content {
+    /*dropdown options hidden by default*/
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    /* Change color of dropdown links on hover */
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    /* Show the dropdown menu on hover */
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    background-color: #f780007d;
 }
