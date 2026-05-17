@@ -1,6 +1,6 @@
 function searchComicsByName() {
   // search comics in recommendation based on comic name
-  var input, filter, table, tr, td, i, txtValue;
+  var input, filter, table, tr, i, txtValue;
   input = document.getElementById("comicName");
   filter = input.value.toUpperCase();
   table = document.getElementById("recommendation-table");
