@@ -34,14 +34,18 @@
         <h2>Your Subscriptions</h2>
 
         <?php
-            $subscriptionList = false;
-            if (!$subscriptionList) {
-                // If no subscriptions, default text
-                ?>
-                    <p>You have no subscriptions, yet</p>
-                <?php
-            }
+            $subscriptionList = ["testing", "xkcd", "also test"];
         ?>
+
+        <?php if (!empty($subscriptionList)): ?>
+            <ul>
+                <?php foreach ($subscriptionList as $sub): ?>
+                    <li><?= htmlspecialchars($sub) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>You have no subscriptions, yet</p>
+        <?php endif; ?>
 
 </section>
 
