@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <title>Comic Canopy - XKCD</title>
+</head>
+<body>
+
+<style>
+  .wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 100vh; /*prevent second scrollbar*/
+    width: 100%;
+  }
+  
+  #internal-website {
+    /*scale contents in iframe*/
+    width: 100%; /*scale up size*/
+    height: 100%; /*scale up size*/
+    transform-origin: 0 0; /*scale from 0,0*/
+    transform: scale(1); /*scale up/down the content*/
+    border: none; /*remove border*/
+    z-index: 1; /*place on bottom layer */   
+  }
+
+  /* The navigation overlay */
+  .overlay-nav {
+    background-color: #000000;
+    font-size: clamp(62px, 6vw, 100px);
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    padding: 5px 10px;
+    position: fixed; /*keep above iframe*/
+    bottom: 0;
+  }
+
+    .overlay-nav li {
+    display: inline-block; /* Makes list items sit side-by-side */
+    }
+
+  .overlay-nav ul {
+    text-align: center;
+  }
+
+  .overlay-nav button {
+    color: #F77F00;
+    cursor: pointer;
+  }
+
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+ .overlay-nav button:hover {
+    color: white;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.settings {
+    padding: 15px;
+    border: none;
+}
+
+.dropdown-content {
+    /*dropdown options hidden by default*/
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    background-color: #000000;
+    font-size: clamp(12px, 6vw, 24px);
+    min-width: 160px;
+    z-index: 100;
+}
+
+.dropdown-content a {
+    color: #F77F00;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    /* Change color of dropdown links on hover */
+    background-color: #424242;
+}
+
+.dropdown:hover .dropdown-content {
+    /* Show the dropdown menu on hover */
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    background-color: black;
+}
+  
+
+</style>
+
+<div class="wrapper">
+  <nav class="overlay-nav">
+    
+    <ul>
+        <li><button id="minimize">↓</button></li>
+        <div class="dropdown">
+            <button class="settings">⋮</button>
+                <div class="dropdown-content">
+                    <a href="#">Option 1</a>
+                    <a href="#">Option 2</a>
+                    <a href="#">Option 3</a>
+                </div>
+        </div>
+        <li><button id="previous">⇦</button></li>
+        <li><button id="first_page">↞</button></li>
+        <li><button id="last_page">↠</button></li>
+        <li><button id="next">⇨</button></li>
+    </ul>
+  </nav>
+  
+  <iframe src="https://xkcd.com/" id="internal-website"></iframe>
+</div>
+
+<script>
+
+    let first_page_btn = document.getElementById("first_page")
+    first_page_btn.addEventListener('click', function() {
+        const iframe_url = document.getElementById('internal-website')
+        iframe_url.src="https://xkcd.com/1/"
+    });
+
+    let last_page_btn = document.getElementById("last_page")
+    last_page_btn.addEventListener('click', function() {
+        const iframe_url = document.getElementById('internal-website')
+        iframe_url.src="https://xkcd.com"
+    });
+
+    let next_btn = document.getElementById("next")
+    next_btn.addEventListener('click', function() {
+        const iframe_url = document.getElementById('internal-website')
+        iframe_url.src="https://xkcd.com"
+    });
+
+    let previous_btn = document.getElementById("previous")
+    previous_btn.addEventListener('click', function() {
+        const iframe_url = document.getElementById('internal-website')
+        iframe_url.src="https://xkcd.com"
+    });
+</script>
+
+    
+</body>
+</html>
