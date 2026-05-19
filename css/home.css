@@ -9,12 +9,15 @@ section {
 #subscription-table {
     width: 100%;
     border: 1.5px solid #f7f3e3a5; 
+    margin-bottom: 50px;
+    border-collapse: collapse; 
 }
 
-th, td {
+#subscription-table td {
     /*internal borders*/
     border-top: 1.5px solid #f7f3e3a5; 
     border-bottom: 1.5px solid #f7f3e3a5; 
+    padding-right: 12px;
 }
 
 #subscription-table img {

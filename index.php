@@ -30,7 +30,7 @@
         <h2>Your Subscriptions</h2>
 
         <?php
-            $subscriptionList = ["Sad and Sexy Vampires Comic", "XKCD", "Red Rum Mysteries"];
+            $subscriptionList = ["Alien Titan Comic", "Sad and Sexy Vampires Comic", "XKCD", "Red Rum Mysteries"];
         ?>
 
 
