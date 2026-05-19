@@ -26,28 +26,41 @@
         <p>Welcome to Comic Canopy</p>
     </section>
 
-    <?php
-        
-    ?>
-
     <section id="subscriptions">
         <h2>Your Subscriptions</h2>
 
         <?php
-            $subscriptionList = ["testing", "xkcd", "also test"];
+            $subscriptionList = [];
         ?>
 
-        <?php if (!empty($subscriptionList)): ?>
+        <?php if (!empty($subscriptionList)): // if subscriptions list has items ?>
             <ul>
                 <?php foreach ($subscriptionList as $sub): ?>
                     <li><?= htmlspecialchars($sub) ?></li>
                 <?php endforeach; ?>
             </ul>
-        <?php else: ?>
+        <?php else: // if subscriptions list is empty ?>
             <p>You have no subscriptions, yet</p>
         <?php endif; ?>
 
-</section>
+    </section>
+
+    <section id="subscription-list">
+        <table id="subscription-table">
+            <tr>
+                <td>
+                    <img src="assets/Acorn_CC.png" alt="comic image" />
+                </td>
+                <td>
+                    <a href="comic_pages/comic_template.php" class="row_link">
+                        <h3 class="comic_name">Sad and Sexy Vampires Comic</h3>
+                        <p class="url">hotVampiresNearYou.com</p>
+                    </a>
+                </td>
+            </tr>
+
+        </table>
+    </section>
 
 </body>
 </html>

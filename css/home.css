@@ -1,8 +1,53 @@
 /*css for home/index page*/
 
-
 section {
     margin-top: 8px;
     margin-left: 25px;
     margin-right: 25px;
+}
+
+#subscription-table {
+    width: 100%;
+    border: 1.5px solid #f7f3e3a5; 
+}
+
+#subscription-table img {
+    vertical-align: middle;
+    background-color: white;
+    border: solid;
+    border-color: black;
+    margin: 15px;
+    border-radius:50%;
+    width: 60px;
+}
+
+#subscription-table tr:hover {
+    background-color: #f7f3e32e;
+}
+
+#subscription-table tr {
+    position: relative; /*make full row clickable*/
+}
+
+#subscription-table .row_link::after {
+    /*make full row clickable*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+}
+
+.comic_name {
+    /* comic title in box, header*/
+    color: #F77F00;
+    font-size: clamp(12px, 24px, 32px);
+    font-weight: bold;
+    margin-bottom: 0px; /*reduce spacing between paragraphs*/
+}
+
+.url {
+    color: #F77F00;
 }
