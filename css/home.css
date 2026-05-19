@@ -11,6 +11,12 @@ section {
     border: 1.5px solid #f7f3e3a5; 
 }
 
+th, td {
+    /*internal borders*/
+    border-top: 1.5px solid #f7f3e3a5; 
+    border-bottom: 1.5px solid #f7f3e3a5; 
+}
+
 #subscription-table img {
     vertical-align: middle;
     background-color: white;

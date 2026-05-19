@@ -30,37 +30,33 @@
         <h2>Your Subscriptions</h2>
 
         <?php
-            $subscriptionList = [];
+            $subscriptionList = ["Sad and Sexy Vampires Comic", "XKCD", "Red Rum Mysteries"];
         ?>
 
+
         <?php if (!empty($subscriptionList)): // if subscriptions list has items ?>
-            <ul>
+            <table id="subscription-table">
                 <?php foreach ($subscriptionList as $sub): ?>
-                    <li><?= htmlspecialchars($sub) ?></li>
+                    <tr>
+                        <td>
+                            <img src="assets/Acorn_CC.png" alt="comic image" />
+                        </td>
+                        <td>
+                            <a href="comic_pages/comic_template.php" class="row_link">
+                                <h3 class="comic_name"><?= htmlspecialchars($sub) ?></h3>
+                                <p class="url">testingURL.com</p>
+                            </a>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
-            </ul>
+            </table>
+
         <?php else: // if subscriptions list is empty ?>
             <p>You have no subscriptions, yet</p>
         <?php endif; ?>
 
     </section>
 
-    <section id="subscription-list">
-        <table id="subscription-table">
-            <tr>
-                <td>
-                    <img src="assets/Acorn_CC.png" alt="comic image" />
-                </td>
-                <td>
-                    <a href="comic_pages/comic_template.php" class="row_link">
-                        <h3 class="comic_name">Sad and Sexy Vampires Comic</h3>
-                        <p class="url">hotVampiresNearYou.com</p>
-                    </a>
-                </td>
-            </tr>
-
-        </table>
-    </section>
-
+        
 </body>
 </html>
