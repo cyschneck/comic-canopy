@@ -12,10 +12,10 @@
 <body>
     <header class="header-main">
         <div class="header-main-logo">
-            <a href="index.html"><img src="assets/Acorn_CC.png" alt="cc-logo"></a>
+            <a href="index.php"><img src="assets/Acorn_CC.png" alt="cc-logo"></a>
             <nav class="header-main-nav">
                 <ul>
-                    <li><a href="recommendations.html">Recommendations</a></li>
+                    <li><a href="recommendations.php">Recommendations</a></li>
                 </ul>
             </nav>
         </div>

@@ -11,11 +11,11 @@
 <body> 
     <header class="header-main">
         <div class="header-main-logo">
-            <a href="index.html"><img src="assets/Acorn_CC.png" alt="cc-logo"></a>
+            <a href="index.php"><img src="assets/Acorn_CC.png" alt="cc-logo"></a>
             <nav class="header-main-nav">
                 <ul>
-                    <li><a href="recommendations.html">Recommendations</a></li>
-                    <li><a href="comic_template.html">Testing</a></li>
+                    <li><a href="recommendations.php">Recommendations</a></li>
+                    <li><a href="comic_pages/comic_template.php">Testing</a></li>
                 </ul>
             </nav>
         </div>
@@ -26,11 +26,24 @@
         <p>Welcome to Comic Canopy</p>
     </section>
 
+    <?php
+        
+    ?>
+
     <section id="subscriptions">
         <h2>Your Subscriptions</h2>
-        <p>You have no subscriptions, yet</p>
-        <p>This is a very long sentence that I am using to testing the functionality of the paragraph text. Wow, what a long sentence, it just keeps going and going and going and going</p>
-    </section>
+
+        <?php
+            $subscriptionList = false;
+            if (!$subscriptionList) {
+                // If no subscriptions, default text
+                ?>
+                    <p>You have no subscriptions, yet</p>
+                <?php
+            }
+        ?>
+
+</section>
 
 </body>
 </html>
