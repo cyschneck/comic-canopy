@@ -72,7 +72,8 @@
 
         <?php
             // query indivual comic table
-            $comic_query = $pdo->query("SELECT * FROM xkcd");
+            $tableName = $comic_row["Table Name"];
+            $comic_query = $pdo->query("SELECT * FROM $tableName");
             $comic_pages_result = $comic_query->fetchAll(PDO::FETCH_ASSOC);
         ?>
         
