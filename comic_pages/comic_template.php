@@ -10,6 +10,11 @@
 </head>
 <body>
 
+    <?php 
+        session_start();
+        echo $_SESSION['USER_NAME'];
+    ?>
+
     <header class="header-main">
         <div class="header-main-logo">
             <a href="../index.php"><img src="../assets/Acorn_CC.png" alt="cc-logo"></a>
@@ -38,10 +43,10 @@
 
     <section id="comic_table">
         <?php
+            // placeholder testing for loop
             $pageList = range(1, 6);
             $read_unread = ["comic_read", "comic_read", "comic_unread", "comic_unread", "comic_unread", "comic_unread", "comic_unread", "comic_unread", "comic_unread"]
         ?>
-
 
         <?php if (!empty($pageList)): // if subscriptions list has items ?>
             <table id="comic_pages">
@@ -66,7 +71,7 @@
             </table>
 
         <?php else: // if subscriptions list is empty ?>
-            <p>This comic as no pages, odd</p>
+            <p>This comic has no pages, odd</p>
         <?php endif; ?>
 
     </section>    

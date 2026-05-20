@@ -39,59 +39,39 @@
         </section>
 
         <section id="recommendation-list">
-            <table id="recommendation-table">
 
-                <tr>
-                    <td>
-                        <a href="comic_pages/comic_template.html" class="row_link">
-                            <h3 class="comic_name">Sad and Sexy Vampires Comic</h3>
-                            <p class="url">hotVampiresNearYou.com</p>
-                            <section class="tags">
-                                <ul>
-                                    <li>Fantasy</li>
-                                    <li>Horror</li>
-                                    <li>Romance</li>
-                                </ul>
-                            </section>
-                            <p class="description">This is a very long description of the comic that is not exactly the same as the "about" comic section, just a short blurb with relevant tags and the like</p>
-                        </a>
-                    </td>
-                </tr>
+            <?php
+                // placeholder testing for loop
+                $all_comics = ["Red Rum Mysteries", "Sad and Sexy Vampires Comic", "XKCD"];
+                $comic_urls = ["mystery-red.com", "hotVampiresNearYou.com", "xkcd.com"];
+            ?>
 
-                <tr>
-                    <td>
-                        <a href="comic_pages/comic_template.html" class="row_link">
-                            <h3 class="comic_name">Red Rum Mysteries</h3>
-                            <p class="url">mystery-comic.com</p>
-                            <section class="tags">
-                                <ul>
-                                    <li>Mystery</li>
-                                    <li>Horror</li>
-                                    <li>Essential Reading</li>
-                                </ul>
-                            </section>
-                            <p class="description">This is a very long description of the comic that is not exactly the same as the "about" comic section, just a short blurb with relevant tags and the like</p>
-                        </a>
-                    </td>
-                </tr>                
-                <tr>
-                    <td>
-                        <a href="comic_pages/comic_template.html" class="row_link">
-                            <h3 class="comic_name">XKCD</h3>
-                            <p class="url">xkcd.com</p>
-                            <section class="tags">
-                                <ul>
-                                    <li>Comedy</li>
-                                    <li>Science-Fiction</li>
-                                    <li>Educational</li>
-                                </ul>
-                            </section>
-                            <p class="description">This is a very long description of the comic that is not exactly the same as the "about" comic section, just a short blurb with relevant tags and the like</p>
-                        </a>
-                    </td>
-                </tr>        
+            <?php if (!empty($all_comics)): // if subscriptions list has items ?>
+                <table id="recommendation-table">
+                    <?php foreach ($all_comics as $index => $comic): ?>
+                        <tr>
+                            <td>
+                                <a href="comic_pages/comic_template.php" class="row_link">
+                                    <h3 class="comic_name"> <?= htmlspecialchars($comic) ?></h3>
+                                    <p class="url"><?= htmlspecialchars($comic_urls[$index]) ?></p>
+                                    <section class="tags">
+                                        <ul>
+                                            <li>Fantasy</li>
+                                            <li>Horror</li>
+                                            <li>Romance</li>
+                                        </ul>
+                                    </section>
+                                    <p class="description">This is a very long description of the comic that is not exactly the same as the "about" comic section, just a short blurb with relevant tags and the like</p>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
 
-            </table>
+            <?php else: // if full list is empty ?>
+                <p>There are no recommendations, odd</p>
+            <?php endif; ?>
+
         </section>
     </section> 
 </body>
