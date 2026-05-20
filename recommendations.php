@@ -81,7 +81,7 @@
                                     </section>
                                     <p class="description">
                                         <?php
-                                            $description = $comic_row["About"];
+                                            $description = $comic_row["Long Description"];
                                             $description = str_replace(['"'], '', $description); // stripe out quotes
                                             $description = str_replace(['\n'], ' ', $description); // stripe out newline characters
                                         ?>

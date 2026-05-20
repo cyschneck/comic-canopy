@@ -10,11 +10,6 @@
 </head>
 <body> 
 
-    <?php
-        session_start();
-        $_SESSION['USER_NAME'] = "TestingUser";
-    ?>
-
     <header class="header-main">
         <div class="header-main-logo">
             <a href="index.php"><img src="assets/Acorn_CC.png" alt="cc-logo"></a>
@@ -29,23 +24,13 @@
 
     <section id="welcome">
         <h1>Home</h1>
-        <p>Welcome to Comic Canopy, <b><?= $_SESSION['USER_NAME'] ?></b></p>
+        <p>Welcome to Comic Canopy</b></p>
     </section>
 
     <section id="subscriptions">
         <h2>Your Subscriptions</h2>
 
         <?php
-
-            // retrieve data from database
-            function retriveSubscriptions()
-            {
-                return [];
-            }
-
-            $subscriptionList = retriveSubscriptions();
-
-
             // placeholder for loop
             //$subscriptionList = [];
             $subscriptionList = ["Alien Titan Comic", "Sad and Sexy Vampires Comic", "XKCD", "Red Rum Mysteries"];

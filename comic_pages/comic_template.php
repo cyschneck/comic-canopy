@@ -10,51 +10,80 @@
 </head>
 <body>
 
-    <?php 
-        session_start();
-        echo $_SESSION['USER_NAME'];
-    ?>
-
     <header class="header-main">
         <div class="header-main-logo">
             <a href="../index.php"><img src="../assets/Acorn_CC.png" alt="cc-logo"></a>
             <nav class="header-main-nav">
                 <ul>
-                    <li><a href="recommendations.php">Recommendations</a></li>
+                    <li><a href="../recommendations.php">Recommendations</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <?php    
+        $dsn = "mysql:host=localhost;dbname=comic_canopy";
+        $dbusername = "root";
+        $dbpassword = "";
+
+        try {
+            // connect to database
+            $pdo = new PDO($dsn, $dbusername, $dbpassword);
+            $pdo->setattribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            // report back error message on fail connectioned
+            echo "Connection failed: " . $e->getMessage();
+        }
+        // collect comic data
+        $all_comics_query = $pdo->query("SELECT * FROM all_comics WHERE `Comic Name` = 'XKCD'");
+        $all_comics_results = $all_comics_query->fetchAll(PDO::FETCH_ASSOC);
+        $comic_row = $all_comics_results[0];
+    ?>
+
     <section id="welcome">
         <section id="comic_header">
             <img src="../assets/Acorn_CC.png" alt="comic image" />
             <section id="name_author">
-                <h1>Long Comic Name Here</h1>
-                <h3>Author Name, Artist Name</h3>
+                <h1><?= $comic_row["Comic Name"] ?></h1>
+                <h3>
+                    <?php 
+                        $authors_str = $comic_row["Authors"];
+                        $authors_str = str_replace(['"'], '', $authors_str); // stripe out quotes
+                    ?>
+                    <?= $authors_str ?>
+                </h3>
             </section>
         </section>
     </section>
 
     <section id="about_comic">
         <p><b>About:</b></p>
-        <p>This is a place to put the general about this comic section, but it will be pretty long so it would be good to be able to have the option to collapse the text if it is getting to long, just like this actually. A text that is more than four or five rows should be collapsed down to prevent it from taking up too much of the screen</p>
+        <p>
+            <?php
+                $description = $comic_row["Long Description"];
+                $description = str_replace(['"'], '', $description); // stripe out quotes
+                $description = str_replace(['\n'], ' ', $description); // stripe out newline characters
+            ?>
+            <?=$description ?>
+        </p>
     </section>
 
     <section id="comic_table">
-        <?php
-            // placeholder testing for loop
-            $pageList = range(1, 6);
-            $read_unread = ["comic_read", "comic_read", "comic_unread", "comic_unread", "comic_unread", "comic_unread", "comic_unread", "comic_unread", "comic_unread"]
-        ?>
 
-        <?php if (!empty($pageList)): // if subscriptions list has items ?>
+        <?php
+            // query indivual comic table
+            $comic_query = $pdo->query("SELECT * FROM xkcd");
+            $comic_pages_result = $comic_query->fetchAll(PDO::FETCH_ASSOC);
+        ?>
+        
+
+        <?php if (!empty($comic_pages_result)): // if subscriptions list has items ?>
             <table id="comic_pages">
-                <?php foreach ($pageList as $index => $page): ?>
-                    <tr class="<?= htmlspecialchars($read_unread[$index]) ?> <?= htmlspecialchars($page) ?>">
+                <?php foreach ($comic_pages_result as $page): ?>
+                    <tr class="comic_unread <?= $page["Page Number"] ?>">
                         <td class="comic_page_details">
-                            <h3>Page <?= htmlspecialchars($page) ?></h3>
-                            <p>https://testing.com/comic/page-<?= htmlspecialchars($page) ?></p>
+                            <h3>Page <?= $page["Page Number"] ?></h3>
+                            <p> <?= $page["Page URL"] ?></p>
                         </td>
                         <td>Continue Reading</td>
                         <td>
