@@ -7,8 +7,9 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/recommendations.css">
      <script src="javascript/recommendations.js"></script> 
-    <title>Comic Canopy - FAQ</title>
+    <title>Comic Canopy - Recommmendations</title>
 </head>
+
 <body>
     <header class="header-main">
         <div class="header-main-logo">
@@ -20,6 +21,24 @@
             </nav>
         </div>
     </header>
+
+    <?php    
+        $dsn = "mysql:host=localhost;dbname=comic_canopy";
+        $dbusername = "root";
+        $dbpassword = "";
+
+        try {
+            // connect to database
+            $pdo = new PDO($dsn, $dbusername, $dbpassword);
+            $pdo->setattribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            // report back error message on fail connectioned
+            echo "Connection failed: " . $e->getMessage();
+        }
+        // populate recommendations page based on all existing comics
+        $all_comics_query = $pdo->query("SELECT * FROM all_comics");
+        $all_comics_results = $all_comics_query->fetchAll(PDO::FETCH_ASSOC);
+    ?>
 
 
     <section id="recommendations">
@@ -40,28 +59,34 @@
 
         <section id="recommendation-list">
 
-            <?php
-                // placeholder testing for loop
-                $all_comics = ["Red Rum Mysteries", "Sad and Sexy Vampires Comic", "XKCD"];
-                $comic_urls = ["mystery-red.com", "hotVampiresNearYou.com", "xkcd.com"];
-            ?>
-
-            <?php if (!empty($all_comics)): // if subscriptions list has items ?>
+            <?php if (!empty($all_comics_results)): // if subscriptions list has items ?>
                 <table id="recommendation-table">
-                    <?php foreach ($all_comics as $index => $comic): ?>
+                    <?php foreach ($all_comics_results as $comic_row): ?>
                         <tr>
                             <td>
                                 <a href="comic_pages/comic_template.php" class="row_link">
-                                    <h3 class="comic_name"> <?= htmlspecialchars($comic) ?></h3>
-                                    <p class="url"><?= htmlspecialchars($comic_urls[$index]) ?></p>
+                                    <h3 class="comic_name"> <?= $comic_row["Comic Name"] ?></h3>
+                                    <p class="url"><?= $comic_row["Base URL"] ?></p>
                                     <section class="tags">
                                         <ul>
-                                            <li>Fantasy</li>
-                                            <li>Horror</li>
-                                            <li>Romance</li>
+                                            <?php 
+                                                $comic_tags_str = $comic_row["Tags"];
+                                                $comic_tags_str = str_replace(['"'], '', $comic_tags_str); // stripe out quotes
+                                                $all_tags = preg_split('/,\s*/', $comic_tags_str);
+                                                foreach ($all_tags as $comic_tag):
+                                             ?>
+                                                <li><?= $comic_tag ?></li>
+                                            <?php endforeach; ?>
                                         </ul>
                                     </section>
-                                    <p class="description">This is a very long description of the comic that is not exactly the same as the "about" comic section, just a short blurb with relevant tags and the like</p>
+                                    <p class="description">
+                                        <?php
+                                            $description = $comic_row["About"];
+                                            $description = str_replace(['"'], '', $description); // stripe out quotes
+                                            $description = str_replace(['\n'], ' ', $description); // stripe out newline characters
+                                        ?>
+                                        <?=$description ?>
+                                    </p>
                                 </a>
                             </td>
                         </tr>
