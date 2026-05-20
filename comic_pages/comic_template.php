@@ -35,7 +35,8 @@
             echo "Connection failed: " . $e->getMessage();
         }
         // collect comic data
-        $all_comics_query = $pdo->query("SELECT * FROM all_comics WHERE `Comic Name` = 'XKCD'");
+        $get_name = $_GET["comic_name"];
+        $all_comics_query = $pdo->query("SELECT * FROM all_comics WHERE `Table Name` = '$get_name'");
         $all_comics_results = $all_comics_query->fetchAll(PDO::FETCH_ASSOC);
         $comic_row = $all_comics_results[0];
     ?>
@@ -73,8 +74,15 @@
         <?php
             // query indivual comic table
             $tableName = $comic_row["Table Name"];
-            $comic_query = $pdo->query("SELECT * FROM $tableName");
-            $comic_pages_result = $comic_query->fetchAll(PDO::FETCH_ASSOC);
+
+            try {
+                // check if table exists
+                $comic_query = $pdo->query("SELECT * FROM $tableName");
+                $comic_pages_result = $comic_query->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                $comic_pages_result = [];
+            }
+            
         ?>
         
 
@@ -101,10 +109,9 @@
             </table>
 
         <?php else: // if subscriptions list is empty ?>
-            <p>This comic has no pages, odd</p>
+            <p id="no_pages_found">This comic has no pages, odd</p>
         <?php endif; ?>
-
-    </section>    
+    </section>
     
 </body>
 </html>

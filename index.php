@@ -16,7 +16,6 @@
             <nav class="header-main-nav">
                 <ul>
                     <li><a href="recommendations.php">Recommendations</a></li>
-                    <li><a href="comic_pages/comic_template.php">Testing</a></li>
                 </ul>
             </nav>
         </div>
@@ -32,8 +31,8 @@
 
         <?php
             // placeholder for loop
-            //$subscriptionList = [];
-            $subscriptionList = ["Alien Titan Comic", "Sad and Sexy Vampires Comic", "XKCD", "Red Rum Mysteries"];
+            $subscriptionList = [];
+            //$subscriptionList = ["Alien Titan Comic", "Sad and Sexy Vampires Comic", "XKCD", "Red Rum Mysteries"];
         ?>
 
 
