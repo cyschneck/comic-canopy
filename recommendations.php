@@ -77,6 +77,12 @@
                                              ?>
                                                 <li><?= $comic_tag ?></li>
                                             <?php endforeach; ?>
+                                            <?php if ($comic_row["Length"] >= 250) {?>
+                                                <li>Long Comic</li>
+                                            <?php } if ($comic_row["Length"] <= 100) {?>
+                                                <li>Short Comic</li>
+                                            <?php }?>
+                                            
                                         </ul>
                                     </section>
                                     <p class="description">
