@@ -40,7 +40,7 @@ body {
     white-space: nowrap;
 }
 
-#about_comic {
+#about_comic, #no_pages_found{
     /*about the comic section*/
     margin-top: 8px;
     margin-left: 25px;

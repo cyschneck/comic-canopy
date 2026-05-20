@@ -68,7 +68,7 @@
             <?=$description ?>
         </p>
     </section>
-
+    
     <section id="comic_table">
 
         <?php
