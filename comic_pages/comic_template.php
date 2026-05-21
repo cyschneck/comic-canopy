@@ -49,7 +49,7 @@
                 <h3>
                     <?php 
                         $authors_str = $comic_row["Authors"];
-                        $authors_str = str_replace(['"'], '', $authors_str); // stripe out quotes
+                        $authors_str = str_replace(['"', "“", '“', "”"], '', $authors_str); // stripe out quotes
                     ?>
                     <?= $authors_str ?>
                 </h3>
@@ -62,7 +62,7 @@
         <p>
             <?php
                 $description = $comic_row["Long Description"];
-                $description = str_replace(['"'], '', $description); // stripe out quotes
+                $description = str_replace(['"', "“", '“', "”"], '', $description); // stripe out quotes
                 $description = str_replace(['\n'], ' ', $description); // stripe out newline characters
             ?>
             <?=$description ?>

@@ -71,7 +71,7 @@
                                         <ul>
                                             <?php 
                                                 $comic_tags_str = $comic_row["Tags"];
-                                                $comic_tags_str = str_replace(['"'], '', $comic_tags_str); // stripe out quotes
+                                                $comic_tags_str = str_replace(['"', "“", '“', "”"], '', $comic_tags_str); // stripe out quotes
                                                 $all_tags = preg_split('/,\s*/', $comic_tags_str);
                                                 foreach ($all_tags as $comic_tag):
                                              ?>
@@ -88,7 +88,7 @@
                                     <p class="description">
                                         <?php
                                             $description = $comic_row["Long Description"];
-                                            $description = str_replace(['"'], '', $description); // stripe out quotes
+                                            $description = str_replace(['"', "“", '“', "”"], '', $description); // stripe out quotes
                                             $description = str_replace(['\n'], ' ', $description); // stripe out newline characters
                                         ?>
                                         <?=$description ?>
