@@ -89,7 +89,7 @@
                 <?php foreach ($comic_pages_result as $page): ?>
                     <tr class="comic_unread <?= $page["Page Number"] ?>" class="full_comic_row">
                         <td class="comic_page_details">
-                            <a href=<?= $page["Page URL"] ?> class="row_link">
+                            <a href="iframe.php?comic_name=<?=$tableName ?>&page_num=<?=$page['Page Number'] ?>" class="row_link">
                                 <h3>Page <?= $page["Page Number"] ?></h3>
                                 <p> <?= $page["Page URL"] ?></p>
                             </a>

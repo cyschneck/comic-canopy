@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/recommendations.css">
-     <script src="javascript/recommendations.js"></script> 
+    <script src="javascript/recommendations.js"></script> 
     <title>Comic Canopy - Recommmendations</title>
 </head>
 

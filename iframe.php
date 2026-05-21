@@ -5,159 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>Comic Canopy - XKCD</title>
+    <link rel="stylesheet" type="text/css" href="css/iframe.css">
+    <title>Comic Canopy</title>
 </head>
 <body>
 
-<style>
-  .wrapper {
-    position: relative;
-    overflow: hidden;
-    height: 100vh; /*prevent second scrollbar*/
-    width: 100%;
-  }
-  
-  #internal-website {
-    /*scale contents in iframe*/
-    width: 100%; /*scale up size*/
-    height: 100%; /*scale up size*/
-    transform-origin: 0 0; /*scale from 0,0*/
-    transform: scale(1); /*scale up/down the content*/
-    border: none; /*remove border*/
-    z-index: 1; /*place on bottom layer */   
-  }
 
-  /* The navigation overlay */
-  .overlay-nav {
-    background-color: #000000;
-    font-size: clamp(62px, 6vw, 100px);
-    width: 100%;
-    position: absolute;
-    z-index: 100;
-    padding: 5px 10px;
-    position: fixed; /*keep above iframe*/
-    bottom: 0;
-  }
+  <?php    
+        $dsn = "mysql:host=localhost;dbname=comic_canopy";
+        $dbusername = "root";
+        $dbpassword = "";
 
-    .overlay-nav li {
-    display: inline-block; /* Makes list items sit side-by-side */
-    }
+        try {
+            // connect to database
+            $pdo = new PDO($dsn, $dbusername, $dbpassword);
+            $pdo->setattribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            // report back error message on fail connectioned
+            echo "Connection failed: " . $e->getMessage();
+        }
+        // collect comic data
+        $get_name = $_GET["comic_name"];
+        $all_comics_query = $pdo->query("SELECT * FROM all_comics WHERE `Table Name` = '$get_name'");
+        $all_comics_results = $all_comics_query->fetchAll(PDO::FETCH_ASSOC);
+        $comic_row = $all_comics_results[0];
 
-  .overlay-nav ul {
-    text-align: center;
-  }
+        // query indivual comic table
+        $get_page_num = $_GET["page_num"];
+        $tableName = $comic_row["Table Name"];
 
-  .overlay-nav button {
-    color: #F77F00;
-    cursor: pointer;
-  }
+        try {
+              // check if table exists
+              $comic_query = $pdo->query("SELECT * FROM $tableName WHERE `Page Number` = '$get_page_num'");
+              $comic_page_num = $comic_query->fetchAll(PDO::FETCH_ASSOC);
+              $comic_page_num = $comic_page_num[0];
+        } catch (PDOException $e) {
+              $comic_page_num = [];
+          }
+    ?>
 
+  <div class="wrapper">
 
-  body {
-    margin: 0;
-    padding: 0;
-  }
+    <iframe src=<?= $comic_page_num["Page URL"]; ?> id="internal-website"></iframe>
 
- .overlay-nav button:hover {
-    color: white;
-  }
+    <nav class="overlay-nav">
+      <ul>
+          <li><a href="comic_template.php?comic_name=<?= $comic_row["Table Name"] ?>" class="row_link">X</li>
+          <li><button id="minimize">↓</button></li>
+          <div class="dropdown">
+              <button class="settings">⋮</button>
+                  <div class="dropdown-content">
+                      <a href="#">Default: Arrows</a>
+                      <a href="#">Click to Proceed</a>
+                      <a href="#">Click Website (Untracked)</a>
+                  </div>
+          </div>
 
-  .dropdown {
-    position: relative;
-    display: inline-block;
-}
+          <?php
+            // get first and last page
+            $page_query = $pdo->query("SELECT * FROM $tableName");
+            $page_query_requests = $page_query->fetchAll(PDO::FETCH_ASSOC);
+            $first_page = $page_query_requests[0]["Page Number"];
+            $last_page = $page_query_requests[count($page_query_requests) - 1]["Page Number"];
 
-.settings {
-    padding: 15px;
-    border: none;
-}
+            // get previous page
+            if ($get_page_num == 1) {
+              $previous_page = 1; // set to 1 if at the first page
+            } else {
+                $page_before_query = $pdo->query("SELECT * FROM $tableName WHERE `Page Number` < '$get_page_num' ORDER BY `Page Number` DESC LIMIT 1;");
+                $page_before_query_request = $page_before_query->fetchAll(PDO::FETCH_ASSOC);
+                $previous_page = $page_before_query_request[0]["Page Number"];
+            }
 
-.dropdown-content {
-    /*dropdown options hidden by default*/
-    display: none;
-    position: absolute;
-    bottom: 100%;
-    background-color: #000000;
-    font-size: clamp(12px, 6vw, 24px);
-    min-width: 250px;
-    z-index: 100;
-}
-
-.dropdown-content a {
-    color: #F77F00;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    /* Change color of dropdown links on hover */
-    background-color: #424242;
-}
-
-.dropdown:hover .dropdown-content {
-    /* Show the dropdown menu on hover */
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    background-color: black;
-}
-  
-
-</style>
-
-<div class="wrapper">
-  <nav class="overlay-nav">
+            // get next page
+            if ($get_page_num == count($page_query_requests)) {
+              $next_page = $get_page_num; // if on last page, set to current page
+            } else {
+                $page_next_query = $pdo->query("SELECT * FROM $tableName WHERE `Page Number` > '$get_page_num' ORDER BY `Page Number` ASC LIMIT 1;");
+                $page_next_query_request = $page_next_query->fetchAll(PDO::FETCH_ASSOC);
+                $next_page = $page_next_query_request[0]["Page Number"];
+            }
+            
+          ?>
+          <li><a href="iframe.php?comic_name=<?=$tableName ?>&page_num=<?=$previous_page ?>" class="previous">⇦</a></li>
+          <li><a href="iframe.php?comic_name=<?=$tableName ?>&page_num=<?=$first_page ?>" class="first_page">↞</a></li>
+          <li><a href="iframe.php?comic_name=<?=$tableName ?>&page_num=<?=$last_page ?>" class="last_page">↠</a></li>
+          <li><a href="iframe.php?comic_name=<?=$tableName ?>&page_num=<?=$next_page ?>" class="next">⇨</a></li>
+      </ul>
+      <p id="page_url"><?= $comic_page_num["Page URL"]; ?></p>
+    </nav>
     
-    <ul>
-        <li><button id="minimize">↓</button></li>
-        <div class="dropdown">
-            <button class="settings">⋮</button>
-                <div class="dropdown-content">
-                    <a href="#">Default: Arrows</a>
-                    <a href="#">Click to Proceed</a>
-                    <a href="#">Click Website (Untracked)</a>
-                </div>
-        </div>
-        <li><button id="previous">⇦</button></li>
-        <li><button id="first_page">↞</button></li>
-        <li><button id="last_page">↠</button></li>
-        <li><button id="next">⇨</button></li>
-    </ul>
-  </nav>
-  
-  <iframe src="https://xkcd.com/" id="internal-website"></iframe>
-</div>
-
-<script>
-
-    let first_page_btn = document.getElementById("first_page")
-    first_page_btn.addEventListener('click', function() {
-        const iframe_url = document.getElementById('internal-website')
-        iframe_url.src="https://xkcd.com/1/"
-    });
-
-    let last_page_btn = document.getElementById("last_page")
-    last_page_btn.addEventListener('click', function() {
-        const iframe_url = document.getElementById('internal-website')
-        iframe_url.src="https://xkcd.com"
-    });
-
-    let next_btn = document.getElementById("next")
-    next_btn.addEventListener('click', function() {
-        const iframe_url = document.getElementById('internal-website')
-        iframe_url.src="https://xkcd.com"
-    });
-
-    let previous_btn = document.getElementById("previous")
-    previous_btn.addEventListener('click', function() {
-        const iframe_url = document.getElementById('internal-website')
-        iframe_url.src="https://xkcd.com"
-    });
-</script>
-
+  </div>
     
 </body>
 </html>
