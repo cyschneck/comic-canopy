@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/comic_page.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/comic_page.css">
     <title>Comic Canopy</title>
 </head>
 <body>
 
     <header class="header-main">
         <div class="header-main-logo">
-            <a href="../index.php"><img src="../assets/Acorn_CC.png" alt="cc-logo"></a>
+            <a href="index.php"><img src="assets/Acorn_CC.png" alt="cc-logo"></a>
             <nav class="header-main-nav">
                 <ul>
-                    <li><a href="../recommendations.php">Recommendations</a></li>
+                    <li><a href="recommendations.php">Recommendations</a></li>
                 </ul>
             </nav>
         </div>
@@ -43,7 +43,7 @@
 
     <section id="welcome">
         <section id="comic_header">
-            <img src="../assets/Acorn_CC.png" alt="comic image" />
+            <img src="assets/Acorn_CC.png" alt="comic image" />
             <section id="name_author">
                 <h1><?= $comic_row["Comic Name"] ?></h1>
                 <h3>
@@ -82,25 +82,26 @@
             } catch (PDOException $e) {
                 $comic_pages_result = [];
             }
-            
         ?>
         
-
-        <?php if (!empty($comic_pages_result)): // if subscriptions list has items ?>
+        <?php if (!empty($comic_pages_result)): ?>
             <table id="comic_pages">
                 <?php foreach ($comic_pages_result as $page): ?>
-                    <tr class="comic_unread <?= $page["Page Number"] ?>">
+                    <tr class="comic_unread <?= $page["Page Number"] ?>" class="full_comic_row">
                         <td class="comic_page_details">
-                            <h3>Page <?= $page["Page Number"] ?></h3>
-                            <p> <?= $page["Page URL"] ?></p>
+                            <a href=<?= $page["Page URL"] ?> class="row_link">
+                                <h3>Page <?= $page["Page Number"] ?></h3>
+                                <p> <?= $page["Page URL"] ?></p>
+                            </a>
                         </td>
-                        <td>Continue Reading</td>
                         <td>
                             <div class="dropdown">
                                 <button class="dropbtn">⋮</button>
                                 <div class="dropdown-content">
                                     <a href="#">Mark as Read</a>
                                     <a href="#">Read Up to Here</a>
+                                    <a href="#">Mark as Unread</a>
+                                    <a href="#">Unread Up to Here</a>
                                 </div>
                             </div>
                         </td>

@@ -64,7 +64,7 @@
                     <?php foreach ($all_comics_results as $comic_row): ?>
                         <tr>
                             <td>
-                                <a href="comic_pages/comic_template.php?comic_name=<?= $comic_row["Table Name"] ?>" class="row_link">
+                                <a href="comic_template.php?comic_name=<?= $comic_row["Table Name"] ?>" class="row_link">
                                     <h3 class="comic_name"> <?= $comic_row["Comic Name"] ?></h3>
                                     <p class="url"><?= $comic_row["Base URL"] ?></p>
                                     <section class="tags">

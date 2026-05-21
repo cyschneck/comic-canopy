@@ -6,7 +6,7 @@ body {
 } 
 
 #comic_header {
-    background-color: rgb(85, 85, 85);
+    background-color: #555555;
     height: 100px;
     display: flex;
     justify-content: left; /*horizontal*/
@@ -40,7 +40,7 @@ body {
     white-space: nowrap;
 }
 
-#about_comic, #no_pages_found{
+#about_comic, #no_pages_found {
     /*about the comic and optional section if no table is found*/
     margin-top: 8px;
     margin-left: 25px;
@@ -53,8 +53,15 @@ table, th, td {
     width: 100%;
     border-top: 1.5px solid #f7f3e3a5; 
     border-bottom: 1.5px solid #f7f3e3a5; 
-    padding: 20px;
     margin-bottom: 50px;
+}
+
+.comic_page_details {
+    padding: 20px;
+}
+
+.comic_page_details h3 {
+    color: #F7F3E3; 
 }
 
 tr:hover {
@@ -64,16 +71,11 @@ tr:hover {
 table td:nth-child(1) {
     /*dedicate most of the space to the first column*/
     /*background-color: red;*/
-    width: 80%;
+    width: 95%;
 }
 
 table td:nth-child(2) {
     /*background-color: green;*/
-    width: 15%;
-}
-
-table td:nth-child(3) {
-    /*background-color: blue;*/
     width: 5%;
 }
 
@@ -91,18 +93,17 @@ table td:nth-child(3) {
 
 .comic_unread {
     /* color for a comic that not been read*/
-    background-color: #6e6d66;
+    background-color: #5c5c5c;
 }
 
 /* Dropdown Button */
 .dropdown {
     position: relative;
-    display: inline-block;
 }
 
 .dropbtn {
     background-color: #F77F00;
-    padding: 15px;
+    padding: 25px;
     font-size: 15px;
     border: none;
 }
@@ -112,7 +113,7 @@ table td:nth-child(3) {
     display: none;
     position: absolute;
     right: 0;
-    background-color: #f1f1f1;
+    background-color: #e1e1e1;
     min-width: 160px;
     z-index: 1;
 }
@@ -126,7 +127,7 @@ table td:nth-child(3) {
 
 .dropdown-content a:hover {
     /* Change color of dropdown links on hover */
-    background-color: #ddd;
+    background-color: #8a8a8a;
 }
 
 .dropdown:hover .dropdown-content {
