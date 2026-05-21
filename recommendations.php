@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/recommendations.css">
     <script src="javascript/recommendations.js"></script> 
+    <link rel="icon" type="image/x-icon" href="assets/Acorn_CC.png">
     <title>Comic Canopy - Recommmendations</title>
 </head>
 

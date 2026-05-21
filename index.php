@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link rel="icon" type="image/x-icon" href="assets/Acorn_CC.png">
     <title>Comic Canopy</title>
 </head>
 <body> 
