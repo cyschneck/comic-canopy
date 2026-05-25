@@ -48,13 +48,15 @@
         <input type="text" placeholder="Search for comic..." id="comicName" onkeyup="searchComicsByName()">
         <section id="tag_grids">
             <?php
-                $all_tags_query = $pdo->query("SELECT REPLACE(GROUP_CONCAT(Tags), '“', '') from all_comics");
+                $all_tags_query = $pdo->query("SELECT REPLACE(REPLACE(GROUP_CONCAT(Tags), '“', ''), '”', '') from all_comics");
                 $row = $all_tags_query->fetch(PDO::FETCH_ASSOC);
                 $all_tags = implode(", ", $row);
                 $tags_as_str = implode(', ', array_unique(array_map('trim', explode(',', $all_tags))));
                 $tag_array = explode(",", $tags_as_str);
             ?>
             <ul>
+                    <li>Short Comic</li>
+                    <li>Long Comic</li>
                 <?php foreach ($tag_array as $tag): ?>
                     <li><?= $tag ?></li>    
                 <?php endforeach; ?>
@@ -81,7 +83,7 @@
                                              ?>
                                                 <li><?= $comic_tag ?></li>
                                             <?php endforeach; ?>
-                                            <?php if ($comic_row["Length"] >= 250) {?>
+                                            <?php if ($comic_row["Length"] >= 500) {?>
                                                 <li>Long Comic</li>
                                             <?php } if ($comic_row["Length"] <= 100) {?>
                                                 <li>Short Comic</li>
