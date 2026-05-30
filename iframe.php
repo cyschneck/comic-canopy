@@ -51,16 +51,17 @@
 
     <nav class="overlay-nav">
       <ul>
-          <li><a href="comic_template.php?comic_name=<?= $comic_row["Table Name"] ?>" class="row_link">X</li>
-          <li><button id="minimize">↓</button></li>
+          <li><a href="comic_template.php?comic_name=<?= $comic_row["Table Name"] ?>" class="row_link">X</a></li>
+          <!--<li><button id="minimize">↓</button></li>-->
           <div class="dropdown">
               <button class="settings">⋮</button>
                   <div class="dropdown-content">
-                      <a href="#">Default: Arrows</a>
-                      <a href="#">Click to Proceed</a>
-                      <a href="#">Click Website (Untracked)</a>
+                      <button class="selected">Default: Arrows</button>
+                      <button class="unselected">Click to Proceed</button>
+                      <button class="unselected">Click Website (Untracked)</button>
                   </div>
           </div>
+          <li><button id="favorite_page">☆</button></li>
 
           <?php
             // get first and last page
